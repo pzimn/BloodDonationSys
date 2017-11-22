@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="828.0" prefWidth="994.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.Controller">
+    <children>
+        <TabPane layoutX="0.0" layoutY="0.0" prefHeight="828.0" prefWidth="994.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Dawcy">
+                    <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="218.0" prefWidth="252.0">
+                            <children>
+                                <TableView id="b" fx:id="DawcyTabela" layoutX="14.0" layoutY="14.0" prefHeight="465.0" prefWidth="536.0">
+                                    <columns>
+                                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="58.0" text="DawcaID" fx:id="donorId" />
+                                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="136.0" text="Imię" fx:id="name" />
+                                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="161.0" text="Nazwisko" fx:id="lastName" />
+                                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="30.0" text="Grupa Krwi" fx:id="bloodGroup" />
+                                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="149.0" text="Numer Telefonu" fx:id="phoneNumber" />
+                                    </columns>
+                                </TableView>
+                                <Button layoutX="713.0" layoutY="252.0" mnemonicParsing="false" text="Dodaj" />
+                                <GridPane layoutX="582.0" layoutY="138.0" prefWidth="364.0">
+                                    <children>
+                                        <Label text="Imię:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                        <Label text="Nazwisko:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                        <Label text="Miejscowość:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                        <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                        <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    </children>
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="10.0" prefWidth="96.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="268.0" minWidth="10.0" prefWidth="268.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                </GridPane>
+                                <Button layoutX="789.0" layoutY="252.0" mnemonicParsing="false" text="Usuń" />
+                                <Button layoutX="855.0" layoutY="252.0" mnemonicParsing="false" text="Zmień" />
+                                <Button layoutX="567.0" layoutY="21.0" mnemonicParsing="false" onAction="#OnConnectClick" text="Połącz z bazą" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Untitled Tab 2">
+                    <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="571.0" prefWidth="728.0" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>
