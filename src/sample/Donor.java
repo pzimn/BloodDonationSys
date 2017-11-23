@@ -22,11 +22,19 @@ public class Donor {
                 '}';
     }
 
-    public Donor(int donorId, String name, String lastName, int bloodGroupId, String address, String phoneNumber) {
+    public Donor(String name, String lastName, int bloodGroupId, String address, String phoneNumber) {
         this.donorId = donorId;
         this.name = name;
         this.lastName = lastName;
         this.bloodGroupId = bloodGroupId;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Donor(String name, String lastName, String address, String phoneNumber) {
+        this.donorId = donorId;
+        this.name = name;
+        this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
     }

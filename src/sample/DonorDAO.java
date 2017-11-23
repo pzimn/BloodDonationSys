@@ -18,7 +18,7 @@ public class DonorDAO {
     static final String DB_URL = "jdbc:mysql://localhost:3306/bds";
     //  Database credentials
     static final String USER = "root";
-    static final String PASS = "";
+    static final String PASS = "root";
     private NamedParameterJdbcTemplate jdbc;
 
     public DonorDAO(){
@@ -50,11 +50,11 @@ public class DonorDAO {
         jdbc.update(sql, namedParameters);
     }
 
-    public void updateDonorById(int id, String name, String lastName, String address, String phoneNumber){
-        String sql = "UPDATE donors SET address = :address, name = :name, last_name = :lastName, phoneNumber = :phoneNumber WHERE id = :id";
+    public void updateDonorById(int id, String name, String last_name, String address, String phoneNumber){
+        String sql = "UPDATE donors SET address = :address, name = :name, last_name = :last_name, phone_number = :phoneNumber WHERE id = :id";
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         namedParameters.addValue("name", name);
-        namedParameters.addValue("last_name", lastName);
+        namedParameters.addValue("last_name", last_name);
         namedParameters.addValue("address", address);
         namedParameters.addValue("phoneNumber", phoneNumber);
         namedParameters.addValue("id", id);
