@@ -2,95 +2,443 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="846.0" prefWidth="1205.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="805.0" prefWidth="1205.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
   <children>
-    <TabPane layoutX="0.0" prefHeight="846.0" prefWidth="1205.0" tabClosingPolicy="UNAVAILABLE">
+    <TabPane prefHeight="661.0" prefWidth="1205.0" tabClosingPolicy="UNAVAILABLE">
       <tabs>
         <Tab text="Dawcy">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="799.0" prefWidth="1165.0">
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="799.0" prefWidth="1205.0">
               <children>
-                <TableView id="b" fx:id="DawcyTabela" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="756.0" prefWidth="662.0">
+                <TableView id="b" fx:id="donorsTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="611.0" prefWidth="662.0">
                   <columns>
-                    <TableColumn fx:id="donorId" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="DawcaID" />
-                    <TableColumn fx:id="name" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="Imię" />
-                    <TableColumn fx:id="lastName" maxWidth="5000.0" minWidth="10.0" prefWidth="130.0" text="Nazwisko" />
-                    <TableColumn fx:id="bloodGroup" maxWidth="5000.0" minWidth="10.0" prefWidth="101.0" text="Grupa Krwi" />
-                    <TableColumn fx:id="phoneNumber" maxWidth="5000.0" minWidth="10.0" prefWidth="155.0" text="Numer Telefonu" />
-                    <TableColumn fx:id="address" maxWidth="5000.0" minWidth="10.0" prefWidth="121.0" text="Adres" />
+                    <TableColumn fx:id="donorIdColDonors" maxWidth="5000.0" minWidth="10.0" prefWidth="63.0" text="DawcaID" />
+                    <TableColumn fx:id="nameColDonors" maxWidth="5000.0" minWidth="10.0" prefWidth="91.0" text="Imię" />
+                    <TableColumn fx:id="lastNameColDonors" maxWidth="5000.0" minWidth="10.0" prefWidth="105.0" text="Nazwisko" />
+                    <TableColumn fx:id="bloodGroupColDonors" maxWidth="5000.0" minWidth="10.0" prefWidth="78.0" text="Grupa Krwi" />
+                    <TableColumn fx:id="phoneNumberColDonors" maxWidth="5000.0" minWidth="10.0" prefWidth="119.0" text="Numer Telefonu" />
+                    <TableColumn fx:id="addressColDonors" maxWidth="5000.0" minWidth="10.0" prefWidth="99.0" text="Adres" />
+                              <TableColumn fx:id="peselColDonors" maxWidth="5000.0" minWidth="10.0" prefWidth="106.0" text="PESEL" />
                   </columns>
                 </TableView>
-                <Button layoutX="811.0" layoutY="235.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
-                <GridPane layoutX="683.0" layoutY="92.0" prefHeight="140.0" prefWidth="396.0">
-                  <children>
-                    <Label text="Imię:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                    <Label text="Nazwisko:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                    <Label text="Adres:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                    <TextField fx:id="lastNameField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                 <padding>
-                                    <Insets bottom="4.0" />
-                                 </padding></TextField>
-                    <TextField fx:id="adressField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                 <padding>
-                                    <Insets bottom="4.0" />
-                                 </padding></TextField>
-                    <TextField fx:id="phoneNumberField" prefHeight="53.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                 <padding>
-                                    <Insets bottom="4.0" />
-                                 </padding></TextField>
-                    <Label prefHeight="17.0" prefWidth="94.0" text="Numer telefonu:" GridPane.rowIndex="4" />
-                    <TextField fx:id="nameField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Button layoutX="786.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                <Button layoutX="917.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                <Button layoutX="1006.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
+                        <GridPane layoutX="683.0" layoutY="66.0" prefHeight="210.0" prefWidth="498.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="192.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="349.0" minWidth="10.0" prefWidth="306.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                    <Label alignment="CENTER" text="DawcaID:" />
+                    <Label text="Imię:" GridPane.rowIndex="1" />
+                    <Label text="Nazwisko:" GridPane.rowIndex="2" />
+                    <Label text="Adres:" GridPane.rowIndex="4" />
+                    <Label prefHeight="17.0" prefWidth="94.0" text="Numer telefonu:" GridPane.rowIndex="5" />
+                    <TextField id="do" fx:id="donorIdFieldDonors" editable="false" prefWidth="200.0" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="4.0" />
                                  </GridPane.margin>
                                  <padding>
                                     <Insets bottom="4.0" />
                                  </padding></TextField>
-                    <Label text="DawcaID" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                    <TextField id="do" fx:id="donorIdField" editable="false" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <TextField fx:id="donorNameFieldDonors" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="4.0" />
                                  </GridPane.margin>
                                  <padding>
                                     <Insets bottom="4.0" />
                                  </padding></TextField>
-                  </children>
-                  <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="10.0" prefWidth="96.0" />
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="268.0" minWidth="10.0" prefWidth="268.0" />
-                  </columnConstraints>
-                  <rowConstraints>
-                    <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-                  </rowConstraints>
-                </GridPane>
-                <Button layoutX="939.0" layoutY="235.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
-                <Button layoutX="1028.0" layoutY="235.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
-                <Button layoutX="683.0" layoutY="14.0" mnemonicParsing="false" onAction="#OnConnectClick" text="Połącz z bazą" />
+                    <TextField fx:id="donorLastNameFieldDonors" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding></TextField>
+                    <TextField fx:id="donorAddressFieldDonors" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding></TextField>
+                    <TextField fx:id="donorPhoneNumberFieldDonors" prefHeight="15.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <Label prefHeight="17.0" prefWidth="94.0" text="PESEL:" GridPane.rowIndex="6" />
+                              <TextField fx:id="donorPeselFieldDonors" prefHeight="15.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <Label text="Grupa krwi:" GridPane.rowIndex="3" />
+                              <ComboBox fx:id="bloodGroupCombo" prefHeight="25.0" prefWidth="163.0" promptText="Grupa krwi" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                        <Button layoutX="1081.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnClearDonorsFields" text="Czyść pola" />
               </children>
             </AnchorPane>
           </content>
         </Tab>
-        <Tab text="Untitled Tab 2">
+        <Tab text="Jednostki krwiodawstwa">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="571.0" prefWidth="728.0" />
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="571.0" prefWidth="728.0">
+                     <children>
+                        <TableView id="b" fx:id="stationsTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="611.0" prefWidth="662.0">
+                           <columns>
+                              <TableColumn fx:id="idColStations" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="ID" />
+                              <TableColumn fx:id="nameColStations" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="Imię" />
+                              <TableColumn fx:id="addressColStations" maxWidth="5000.0" minWidth="10.0" prefWidth="130.0" text="Adres" />
+                              <TableColumn fx:id="phoneNumberColStations" maxWidth="5000.0" minWidth="10.0" prefWidth="155.0" text="Numer Telefonu" />
+                           </columns>
+                        </TableView>
+                        <GridPane layoutX="693.0" layoutY="50.0" prefHeight="210.0" prefWidth="498.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="192.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="349.0" minWidth="10.0" prefWidth="306.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" text="ID" />
+                              <Label text="Imię:" GridPane.rowIndex="1" />
+                              <Label text="Adres:" GridPane.rowIndex="2" />
+                              <Label text="Numer telefonu:" GridPane.rowIndex="3" />
+                              <TextField id="do" fx:id="idFieldStations" editable="false" prefWidth="200.0" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="nameFieldStations" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="addressFieldStations" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="phoneNumberFieldStations" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                           </children>
+                        </GridPane>
+                        <Button layoutX="762.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                        <Button layoutX="869.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                        <Button layoutX="942.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
+                     </children></AnchorPane>
           </content>
         </Tab>
+            <Tab text="Grupy krwi">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView id="b" fx:id="bloodGroupsTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="611.0" prefWidth="662.0">
+                           <columns>
+                              <TableColumn fx:id="idColBloodGroups" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="ID" />
+                              <TableColumn fx:id="groupColBloodGroups" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="Grupa" />
+                           </columns>
+                        </TableView>
+                        <GridPane layoutX="693.0" layoutY="50.0" prefHeight="93.0" prefWidth="498.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="192.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="349.0" minWidth="10.0" prefWidth="306.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" text="ID" />
+                              <Label text="Grupa" GridPane.rowIndex="1" />
+                              <TextField id="do" fx:id="idFieldBloodGroups" editable="false" prefWidth="200.0" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="groupFieldBloodGroups" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                           </children>
+                        </GridPane>
+                        <Button layoutX="778.0" layoutY="151.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                        <Button layoutX="888.0" layoutY="151.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                        <Button layoutX="958.0" layoutY="151.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Oddania">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView id="b" fx:id="bloodDonationsTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="611.0" prefWidth="662.0">
+                           <columns>
+                              <TableColumn fx:id="idColDonations" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="ID" />
+                              <TableColumn fx:id="donorIdColDonations" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="DawcaID" />
+                              <TableColumn fx:id="bloodLitresColDonations" maxWidth="5000.0" minWidth="10.0" prefWidth="95.0" text="Krew_litry" />
+                              <TableColumn fx:id="bloodGroupIdColDonations" maxWidth="5000.0" minWidth="10.0" prefWidth="100.0" text="ID_grupy_krwi" />
+                              <TableColumn fx:id="dateColDonations" maxWidth="5000.0" minWidth="10.0" prefWidth="151.0" text="Data_oddania_krwi" />
+                              <TableColumn fx:id="stationIdColDonations" maxWidth="5000.0" minWidth="10.0" prefWidth="161.0" text="ID_jednostki_krwiodawstwa" />
+                           </columns>
+                        </TableView>
+                        <GridPane layoutX="693.0" layoutY="50.0" prefHeight="210.0" prefWidth="498.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="192.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="349.0" minWidth="10.0" prefWidth="306.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" text="ID:" />
+                              <Label text="DawcaID:" GridPane.rowIndex="1" />
+                              <Label text="Krew_litry:" GridPane.rowIndex="2" />
+                              <Label text="ID_grupy_krwi:" GridPane.rowIndex="3" />
+                              <Label prefHeight="17.0" prefWidth="145.0" text="Data_oddania_krwi:" GridPane.rowIndex="4" />
+                              <TextField id="do" fx:id="idFieldDonations" editable="false" prefWidth="200.0" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="donorIdFieldDonations" editable="false" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="bloodLitresFieldDonations" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="bloodGroupIdFieldDonations" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="dateFieldDonations" prefHeight="15.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <Label prefHeight="17.0" prefWidth="168.0" text="ID_jednostki_krwiodawstwa" GridPane.rowIndex="5" />
+                              <TextField fx:id="stationIdFieldDonations" prefHeight="15.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                           </children>
+                        </GridPane>
+                        <Button layoutX="799.0" layoutY="272.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                        <Button layoutX="908.0" layoutY="272.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                        <Button layoutX="976.0" layoutY="272.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Zapotrzebowanie">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView id="b" fx:id="bloodDemandTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="611.0" prefWidth="662.0">
+                           <columns>
+                              <TableColumn fx:id="idColDemand" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="ID" />
+                              <TableColumn fx:id="warehouseIdColDemand" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="ID_magazynu" />
+                              <TableColumn fx:id="bloodGroupIdColDemand" maxWidth="5000.0" minWidth="10.0" prefWidth="130.0" text="ID_grupy_krwi" />
+                              <TableColumn fx:id="quantityColDemand" maxWidth="5000.0" minWidth="10.0" prefWidth="165.0" text="ilość_potrzebnej_krwi" />
+                           </columns>
+                        </TableView>
+                        <GridPane layoutX="693.0" layoutY="58.0" prefHeight="210.0" prefWidth="498.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="192.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="349.0" minWidth="10.0" prefWidth="306.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" text="ID:" />
+                              <Label text="ID_magazynu:" GridPane.rowIndex="1" />
+                              <Label prefHeight="17.0" prefWidth="95.0" text="ID_grupy_krwi:" GridPane.rowIndex="2" />
+                              <Label text="ilość_potrzebnej_krwi:" GridPane.rowIndex="3" />
+                              <TextField id="do" fx:id="idFieldDemand" editable="false" prefWidth="200.0" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="warehouseIdFieldDemand" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="bloodGroupIdFieldDemand" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="quantityFieldDemand" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                           </children>
+                        </GridPane>
+                        <Button layoutX="804.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                        <Button layoutX="915.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                        <Button layoutX="988.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Magazyn">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView id="b" fx:id="bloodWarehouseTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="611.0" prefWidth="662.0">
+                           <columns>
+                              <TableColumn fx:id="idColWarehouse" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="ID" />
+                              <TableColumn fx:id="stationIdColWarehouse" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="ID_jednostki_krwiodawstwa" />
+                              <TableColumn fx:id="sizeColWarehouse" maxWidth="5000.0" minWidth="10.0" prefWidth="130.0" text="Aktualna objętość krwi" />
+                              <TableColumn fx:id="bloodGroupIdColWarehouse" maxWidth="5000.0" minWidth="10.0" prefWidth="101.0" text="ID_grupy_krwi" />
+                              <TableColumn fx:id="phoneNumberColWarehouse" maxWidth="5000.0" minWidth="10.0" prefWidth="155.0" text="Numer Telefonu" />
+                              <TableColumn fx:id="addressColWarehouse" maxWidth="5000.0" minWidth="10.0" prefWidth="121.0" text="Adres" />
+                           </columns>
+                        </TableView>
+                        <GridPane layoutX="693.0" layoutY="54.0" prefHeight="210.0" prefWidth="498.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="192.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="349.0" minWidth="10.0" prefWidth="306.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" text="ID:" />
+                              <Label text="ID_jednostki_krwiodawstwa:" GridPane.rowIndex="1" />
+                              <Label text="Aktualna objętość krwi:" GridPane.rowIndex="2" />
+                              <Label text="ID_grupy_krwi:" GridPane.rowIndex="3" />
+                              <Label prefHeight="17.0" prefWidth="94.0" text="Numer Telefonu:" GridPane.rowIndex="4" />
+                              <TextField id="do" fx:id="idFieldWarehouse" editable="false" prefWidth="200.0" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="stationIdFieldWarehouse" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="sizeFieldWarehouse" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="bloodGroupIdFieldWarehouse" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="phoneNumberFieldWarehouse" prefHeight="15.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <Label prefHeight="17.0" prefWidth="94.0" text="Adres:" GridPane.rowIndex="5" />
+                              <TextField fx:id="addressFieldWarehouse" prefHeight="15.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                           </children>
+                        </GridPane>
+                        <Button layoutX="785.0" layoutY="284.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                        <Button layoutX="895.0" layoutY="284.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                        <Button layoutX="962.0" layoutY="284.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
       </tabs>
     </TabPane>
+      <TextArea fx:id="infoBox" layoutX="14.0" layoutY="673.0" prefHeight="122.0" prefWidth="788.0" />
+      <Separator layoutX="18.0" layoutY="664.0" prefHeight="1.0" prefWidth="1169.0" />
+<Button layoutX="846.0" layoutY="680.0" mnemonicParsing="false" onAction="#OnConnectClick" text="Połącz z bazą" />
   </children>
 </AnchorPane>
