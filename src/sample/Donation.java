@@ -25,6 +25,8 @@ public class Donation {
         this.stationId = stationId;
     }
 
+    public Donation(){}
+
     public int getId() {
         return id;
     }

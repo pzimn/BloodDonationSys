@@ -24,6 +24,8 @@ public class Station {
         this.phoneNumber = phoneNumber;
     }
 
+    public Station(){}
+
     public int getId() {
         return id;
     }
