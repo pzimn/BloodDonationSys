@@ -57,13 +57,13 @@ public class Controller {
     TableView stationsTable;
 
     @FXML
-    TableColumn<Donor, String> idColStations;
+    TableColumn<Station, String> idColStations;
     @FXML
-    TableColumn<Donor, String> nameColStations;
+    TableColumn<Station, String> nameColStations;
     @FXML
-    TableColumn<Donor, String> addressColStations;
+    TableColumn<Station, String> addressColStations;
     @FXML
-    TableColumn<Donor, String> phoneNumberColStations;
+    TableColumn<Station, String> phoneNumberColStations;
 
     @FXML
     TextField idFieldStations;
@@ -79,9 +79,9 @@ public class Controller {
     TableView bloodGroupsTable;
 
     @FXML
-    TableColumn<Donor, String> idColBloodGroups;
+    TableColumn<Blood_group, String> idColBloodGroups;
     @FXML
-    TableColumn<Donor, String> groupColBloodGroups;
+    TableColumn<Blood_group, String> groupColBloodGroups;
 
     @FXML
     TextField idFieldBloodGroups;
@@ -93,17 +93,17 @@ public class Controller {
     TableView bloodDonationsTable;
 
     @FXML
-    TableColumn<Donor, String> idColDonations;
+    TableColumn<Donation, String> idColDonations;
     @FXML
-    TableColumn<Donor, String> donorIdColDonations;
+    TableColumn<Donation, String> donorIdColDonations;
     @FXML
-    TableColumn<Donor, String> bloodLitresColDonations;
+    TableColumn<Donation, String> bloodLitresColDonations;
     @FXML
-    TableColumn<Donor, String> bloodGroupIdColDonations;
+    TableColumn<Donation, String> bloodGroupIdColDonations;
     @FXML
-    TableColumn<Donor, String> dateColDonations;
+    TableColumn<Donation, String> dateColDonations;
     @FXML
-    TableColumn<Donor, String> stationIdColDonations;
+    TableColumn<Donation, String> stationIdColDonations;
 
     @FXML
     TextField idFieldDonations;
@@ -123,18 +123,18 @@ public class Controller {
     TableView bloodDemandTable;
 
     @FXML
-    TableColumn<Donor, String> idColDemand;
+    TableColumn<Demand, String> idColDemand;
     @FXML
-    TableColumn<Donor, String> warehouseIdColDemand;
+    TableColumn<Demand, String> storageIdColDemand;
     @FXML
-    TableColumn<Donor, String> bloodGroupIdColDemand;
+    TableColumn<Demand, String> bloodGroupIdColDemand;
     @FXML
-    TableColumn<Donor, String> quantityColDemand;
+    TableColumn<Demand, String> quantityColDemand;
 
     @FXML
     TextField idFieldDemand;
     @FXML
-    TextField warehouseIdFieldDemand;
+    TextField storageIdFieldDemand;
     @FXML
     TextField bloodGroupIdFieldDemand;
     @FXML
@@ -142,42 +142,60 @@ public class Controller {
 
     //magazyn
     @FXML
-    TableView bloodWarehouseTable;
+    TableView bloodStorageTable;
 
     @FXML
-    TableColumn<Donor, String> idColWarehouse;
+    TableColumn<Storage, String> idColStorage;
     @FXML
-    TableColumn<Donor, String> stationIdColWarehouse;
+    TableColumn<Storage, String> stationIdColStorage;
     @FXML
-    TableColumn<Donor, String> sizeColWarehouse;
+    TableColumn<Storage, String> valueColStorage;
     @FXML
-    TableColumn<Donor, String> bloodGroupIdColWarehouse;
+    TableColumn<Storage, String> bloodGroupIdColStorage;
     @FXML
-    TableColumn<Donor, String> phoneNumberColWarehouse;
+    TableColumn<Storage, String> phoneNumberColStorage;
     @FXML
-    TableColumn<Donor, String> addressColWarehouse;
+    TableColumn<Storage, String> addressColStorage;
 
     @FXML
-    TextField idFieldWarehouse;
+    TextField idFieldStorage;
     @FXML
-    TextField stationIdFieldWarehouse;
+    TextField stationIdFieldStorage;
     @FXML
-    TextField sizeFieldWarehouse;
+    TextField valueFieldStorage;
     @FXML
-    TextField bloodGroupIdFieldWarehouse;
+    TextField bloodGroupIdFieldStorage;
     @FXML
-    TextField phoneNumberFieldWarehouse;
+    TextField phoneNumberFieldStorage;
     @FXML
-    TextField addressFieldWarehouse;
+    TextField addressFieldStorage;
+
+    //szpital
+    @FXML
+    TableView hospitalTable;
+
+    @FXML
+    TableColumn<Storage, String> idColHospital;
+    @FXML
+    TableColumn<Storage, String> nameColHospital;
+    @FXML
+    TableColumn<Storage, String> addressColHospital;
+    @FXML
+    TableColumn<Storage, String> phoneNumberColHospital;
+
+    @FXML
+    TextField idFieldHospital;
+    @FXML
+    TextField nameFieldHospital;
+    @FXML
+    TextField addressFieldHospital;
+    @FXML
+    TextField phoneNumberFieldHospital;
 
     private void clearFields(){
-        donorNameFieldDonors.clear();
-        donorLastNameFieldDonors.clear();
-        donorAddressFieldDonors.clear();
-        donorPhoneNumberFieldDonors.clear();
-        donorIdFieldDonors.clear();
+        System.out.println("Ta metoda musi być zmieniona! (void clearFields())");
+        //trzeba dorobić metody do każdej tableki albo wykorzystać metody np OnClearDonorFields, bo to też kasuje
     }
-
 
     @FXML
     public void initialize() {
@@ -191,8 +209,7 @@ public class Controller {
 
         bloodGroupCombo.setItems(combo);
 
-        final ObservableList<Donor> data = FXCollections.observableArrayList();
-
+        //donors
         donorIdColDonors.setCellValueFactory(new PropertyValueFactory<Donor, Integer>("donorId"));
         nameColDonors.setCellValueFactory(new PropertyValueFactory<Donor, String>("name"));
         lastNameColDonors.setCellValueFactory(new PropertyValueFactory<Donor, String>("lastName"));
@@ -200,7 +217,31 @@ public class Controller {
         addressColDonors.setCellValueFactory(new PropertyValueFactory<Donor, String>("address"));
         phoneNumberColDonors.setCellValueFactory(new PropertyValueFactory<Donor, String>("phoneNumber"));
 
-        donorsTable.setItems(data);
+        //stations
+        idColStations.setCellValueFactory(new PropertyValueFactory<Station, String>("id"));
+        nameColStations.setCellValueFactory(new PropertyValueFactory<Station, String>("name"));
+        addressColStations.setCellValueFactory(new PropertyValueFactory<Station, String>("address"));
+        phoneNumberColStations.setCellValueFactory(new PropertyValueFactory<Station, String>("phoneNumber"));
+
+
+        //storage
+        idColStorage.setCellValueFactory(new PropertyValueFactory<Storage, String>("id"));
+        stationIdColStorage.setCellValueFactory(new PropertyValueFactory<Storage, String>("stationId"));
+        valueColStorage.setCellValueFactory(new PropertyValueFactory<Storage, String>("bloodValue"));
+        bloodGroupIdColStorage.setCellValueFactory(new PropertyValueFactory<Storage, String>("bloodGroupId"));
+        phoneNumberColStorage.setCellValueFactory(new PropertyValueFactory<Storage, String>("phoneNumber"));
+        addressColStorage.setCellValueFactory(new PropertyValueFactory<Storage, String>("address"));
+
+
+        //demand
+        idColDemand.setCellValueFactory(new PropertyValueFactory<Demand, String>("id"));
+        storageIdColDemand.setCellValueFactory(new PropertyValueFactory<Demand, String>("storageId"));
+        bloodGroupIdColDemand.setCellValueFactory(new PropertyValueFactory<Demand, String>("bloodGroupId"));
+        quantityColDemand.setCellValueFactory(new PropertyValueFactory<Demand, String>("quantity"));
+
+        //blood group
+        idColBloodGroups.setCellValueFactory(new PropertyValueFactory<Blood_group, String>("id"));
+        groupColBloodGroups.setCellValueFactory(new PropertyValueFactory<Blood_group, String>("group"));
 
     }
 
@@ -214,8 +255,9 @@ public class Controller {
         donorsTable.setItems(data);
     }
 
+    //donors
     @FXML
-    public void OnAddClick() {
+    public void OnDonorAddClick() {
         Donor d = new Donor();
         d.setName(donorNameFieldDonors.getText());
         d.setLastName(donorLastNameFieldDonors.getText());
@@ -230,13 +272,11 @@ public class Controller {
             data.add(temp);
         }
         donorsTable.setItems(data);
-        clearFields();
-
-
+        OnClearDonorFields();
     }
 
     @FXML
-    public void OnTableClick() {
+    public void OnDonorTableClick() {
 
         if (donorsTable.getSelectionModel().getSelectedIndex() != -1) {
             Donor donor2update = (Donor) donorsTable.getSelectionModel().getSelectedItem();
@@ -257,7 +297,94 @@ public class Controller {
     }
 
     @FXML
-    public void OnDeleteClick() throws SQLException {
+    public void OnDonorDeleteClick() {
+        //usuwanie z bazy
+        Donor donor2delete = (Donor) donorsTable.getSelectionModel().getSelectedItem();
+        int donorId = donor2delete.getDonorId();
+        donorDAO.deleteDonorById(donorId);
+        //aktualizacja z listy
+        ObservableList<Donor> data = FXCollections.observableArrayList();
+        for(Donor d : donorDAO.getAll()){
+            data.add(d);
+        }
+        donorsTable.setItems(data);
+        OnClearDonorFields();
+    }
+
+    @FXML
+    public void OnDonorUpdateClick() {
+
+        if(donorIdFieldDonors.getText() != "") {
+            //todo dodawanie id grupy krwi (trzeba zmiodyfikować metode updateDonorById)
+            donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
+
+            //aktualizacja z listy
+            ObservableList<Donor> data = FXCollections.observableArrayList();
+            for (Donor d : donorDAO.getAll()) {
+                data.add(d);
+
+            }
+            donorsTable.setItems(data);
+            OnClearDonorFields();
+        }else{
+            System.out.println("Nie wybrano krotki!");
+        }
+    }
+
+    @FXML
+    public void OnClearDonorFields(){
+        donorIdFieldDonors.clear();
+        donorNameFieldDonors.clear();
+        donorLastNameFieldDonors.clear();
+        donorAddressFieldDonors.clear();
+        donorPhoneNumberFieldDonors.clear();
+        donorPeselFieldDonors.clear();
+    }
+
+    //todo stations
+    @FXML
+    public void OnStationAddClick() {
+        Donor d = new Donor();
+        d.setName(donorNameFieldDonors.getText());
+        d.setLastName(donorLastNameFieldDonors.getText());
+        d.setBloodGroupId(bloodGroupCombo.getSelectionModel().getSelectedIndex()); //todo to ma dodawać id krwi a nie index z comboboxa
+        d.setPhoneNumber(donorPhoneNumberFieldDonors.getText());
+        d.setAddress(donorAddressFieldDonors.getText());
+
+        donorDAO.create(d);
+        //aktualizacja z listy
+        ObservableList<Donor> data = FXCollections.observableArrayList();
+        for (Donor temp : donorDAO.getAll()) {
+            data.add(temp);
+        }
+        donorsTable.setItems(data);
+        clearFields();
+
+    }
+
+    @FXML
+    public void OnStationTableClick() {
+
+        if (donorsTable.getSelectionModel().getSelectedIndex() != -1) {
+            Donor donor2update = (Donor) donorsTable.getSelectionModel().getSelectedItem();
+
+            donorIdFieldDonors.setText(Integer.toString(donor2update.getDonorId()));
+            donorNameFieldDonors.setText(donor2update.getName());
+            donorLastNameFieldDonors.setText(donor2update.getLastName());
+            donorAddressFieldDonors.setText(donor2update.getAddress());
+            donorPhoneNumberFieldDonors.setText(donor2update.getPhoneNumber());
+
+            donorIdFieldDonations.setText(Integer.toString(donor2update.getDonorId()));
+
+        } else {
+            System.out.println("Nie wybrano elementu!");
+        }
+
+
+    }
+
+    @FXML
+    public void OnStationDeleteClick() {
         //usuwanie z bazy
         Donor donor2delete = (Donor) donorsTable.getSelectionModel().getSelectedItem();
         int donorId = donor2delete.getDonorId();
@@ -271,9 +398,8 @@ public class Controller {
         clearFields();
     }
 
-
     @FXML
-    public void OnUpdateClick() {
+    public void OnStationUpdateClick() {
 
         if(donorIdFieldDonors.getText() != "") {
             //todo dodawanie id grupy krwi (trzeba zmiodyfikować metode updateDonorById)
@@ -293,7 +419,446 @@ public class Controller {
     }
 
     @FXML
-    public void OnClearDonorsFields(){
+    public void OnClearStationFields(){
+
+        donorIdFieldDonors.clear();
+        donorNameFieldDonors.clear();
+        donorLastNameFieldDonors.clear();
+        donorAddressFieldDonors.clear();
+        donorPhoneNumberFieldDonors.clear();
+        donorPeselFieldDonors.clear();
+    }
+
+    //todo groups
+    @FXML
+    public void OnBloodGroupAddClick() {
+        Donor d = new Donor();
+        d.setName(donorNameFieldDonors.getText());
+        d.setLastName(donorLastNameFieldDonors.getText());
+        d.setBloodGroupId(bloodGroupCombo.getSelectionModel().getSelectedIndex()); //todo to ma dodawać id krwi a nie index z comboboxa
+        d.setPhoneNumber(donorPhoneNumberFieldDonors.getText());
+        d.setAddress(donorAddressFieldDonors.getText());
+
+        donorDAO.create(d);
+        //aktualizacja z listy
+        ObservableList<Donor> data = FXCollections.observableArrayList();
+        for (Donor temp : donorDAO.getAll()) {
+            data.add(temp);
+        }
+        donorsTable.setItems(data);
+        clearFields();
+
+    }
+
+    @FXML
+    public void OnBloodGroupTableClick() {
+
+        if (donorsTable.getSelectionModel().getSelectedIndex() != -1) {
+            Donor donor2update = (Donor) donorsTable.getSelectionModel().getSelectedItem();
+
+            donorIdFieldDonors.setText(Integer.toString(donor2update.getDonorId()));
+            donorNameFieldDonors.setText(donor2update.getName());
+            donorLastNameFieldDonors.setText(donor2update.getLastName());
+            donorAddressFieldDonors.setText(donor2update.getAddress());
+            donorPhoneNumberFieldDonors.setText(donor2update.getPhoneNumber());
+
+            donorIdFieldDonations.setText(Integer.toString(donor2update.getDonorId()));
+
+        } else {
+            System.out.println("Nie wybrano elementu!");
+        }
+
+
+    }
+
+    @FXML
+    public void OnBloodGroupDeleteClick() {
+        //usuwanie z bazy
+        Donor donor2delete = (Donor) donorsTable.getSelectionModel().getSelectedItem();
+        int donorId = donor2delete.getDonorId();
+        donorDAO.deleteDonorById(donorId);
+        //aktualizacja z listy
+        ObservableList<Donor> data = FXCollections.observableArrayList();
+        for(Donor d : donorDAO.getAll()){
+            data.add(d);
+        }
+        donorsTable.setItems(data);
+        clearFields();
+    }
+
+    @FXML
+    public void OnBloodGroupUpdateClick() {
+
+        if(donorIdFieldDonors.getText() != "") {
+            //todo dodawanie id grupy krwi (trzeba zmiodyfikować metode updateDonorById)
+            donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
+
+            //aktualizacja z listy
+            ObservableList<Donor> data = FXCollections.observableArrayList();
+            for (Donor d : donorDAO.getAll()) {
+                data.add(d);
+
+            }
+            donorsTable.setItems(data);
+            clearFields();
+        }else{
+            System.out.println("Nie wybrano krotki!");
+        }
+    }
+
+    @FXML
+    public void OnClearBloodGroupFields(){
+
+        donorIdFieldDonors.clear();
+        donorNameFieldDonors.clear();
+        donorLastNameFieldDonors.clear();
+        donorAddressFieldDonors.clear();
+        donorPhoneNumberFieldDonors.clear();
+        donorPeselFieldDonors.clear();
+    }
+
+    //todo donations
+    @FXML
+    public void OnDonationAddClick() {
+        Donor d = new Donor();
+        d.setName(donorNameFieldDonors.getText());
+        d.setLastName(donorLastNameFieldDonors.getText());
+        d.setBloodGroupId(bloodGroupCombo.getSelectionModel().getSelectedIndex()); //todo to ma dodawać id krwi a nie index z comboboxa
+        d.setPhoneNumber(donorPhoneNumberFieldDonors.getText());
+        d.setAddress(donorAddressFieldDonors.getText());
+
+        donorDAO.create(d);
+        //aktualizacja z listy
+        ObservableList<Donor> data = FXCollections.observableArrayList();
+        for (Donor temp : donorDAO.getAll()) {
+            data.add(temp);
+        }
+        donorsTable.setItems(data);
+        clearFields();
+
+    }
+
+    @FXML
+    public void OnDonationTableClick() {
+
+        if (donorsTable.getSelectionModel().getSelectedIndex() != -1) {
+            Donor donor2update = (Donor) donorsTable.getSelectionModel().getSelectedItem();
+
+            donorIdFieldDonors.setText(Integer.toString(donor2update.getDonorId()));
+            donorNameFieldDonors.setText(donor2update.getName());
+            donorLastNameFieldDonors.setText(donor2update.getLastName());
+            donorAddressFieldDonors.setText(donor2update.getAddress());
+            donorPhoneNumberFieldDonors.setText(donor2update.getPhoneNumber());
+
+            donorIdFieldDonations.setText(Integer.toString(donor2update.getDonorId()));
+
+        } else {
+            System.out.println("Nie wybrano elementu!");
+        }
+
+
+    }
+
+    @FXML
+    public void OnDonationDeleteClick() {
+        //usuwanie z bazy
+        Donor donor2delete = (Donor) donorsTable.getSelectionModel().getSelectedItem();
+        int donorId = donor2delete.getDonorId();
+        donorDAO.deleteDonorById(donorId);
+        //aktualizacja z listy
+        ObservableList<Donor> data = FXCollections.observableArrayList();
+        for(Donor d : donorDAO.getAll()){
+            data.add(d);
+        }
+        donorsTable.setItems(data);
+        clearFields();
+    }
+
+    @FXML
+    public void OnDonationUpdateClick() {
+
+        if(donorIdFieldDonors.getText() != "") {
+            //todo dodawanie id grupy krwi (trzeba zmiodyfikować metode updateDonorById)
+            donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
+
+            //aktualizacja z listy
+            ObservableList<Donor> data = FXCollections.observableArrayList();
+            for (Donor d : donorDAO.getAll()) {
+                data.add(d);
+
+            }
+            donorsTable.setItems(data);
+            clearFields();
+        }else{
+            System.out.println("Nie wybrano krotki!");
+        }
+    }
+
+    @FXML
+    public void OnClearDonationFields(){
+
+        donorIdFieldDonors.clear();
+        donorNameFieldDonors.clear();
+        donorLastNameFieldDonors.clear();
+        donorAddressFieldDonors.clear();
+        donorPhoneNumberFieldDonors.clear();
+        donorPeselFieldDonors.clear();
+    }
+
+    //todo demand
+    @FXML
+    public void OnDemandAddClick() {
+        Donor d = new Donor();
+        d.setName(donorNameFieldDonors.getText());
+        d.setLastName(donorLastNameFieldDonors.getText());
+        d.setBloodGroupId(bloodGroupCombo.getSelectionModel().getSelectedIndex()); //todo to ma dodawać id krwi a nie index z comboboxa
+        d.setPhoneNumber(donorPhoneNumberFieldDonors.getText());
+        d.setAddress(donorAddressFieldDonors.getText());
+
+        donorDAO.create(d);
+        //aktualizacja z listy
+        ObservableList<Donor> data = FXCollections.observableArrayList();
+        for (Donor temp : donorDAO.getAll()) {
+            data.add(temp);
+        }
+        donorsTable.setItems(data);
+        clearFields();
+
+    }
+
+    @FXML
+    public void OnDemandTableClick() {
+
+        if (donorsTable.getSelectionModel().getSelectedIndex() != -1) {
+            Donor donor2update = (Donor) donorsTable.getSelectionModel().getSelectedItem();
+
+            donorIdFieldDonors.setText(Integer.toString(donor2update.getDonorId()));
+            donorNameFieldDonors.setText(donor2update.getName());
+            donorLastNameFieldDonors.setText(donor2update.getLastName());
+            donorAddressFieldDonors.setText(donor2update.getAddress());
+            donorPhoneNumberFieldDonors.setText(donor2update.getPhoneNumber());
+
+            donorIdFieldDonations.setText(Integer.toString(donor2update.getDonorId()));
+
+        } else {
+            System.out.println("Nie wybrano elementu!");
+        }
+
+
+    }
+
+    @FXML
+    public void OnDemandDeleteClick() {
+        //usuwanie z bazy
+        Donor donor2delete = (Donor) donorsTable.getSelectionModel().getSelectedItem();
+        int donorId = donor2delete.getDonorId();
+        donorDAO.deleteDonorById(donorId);
+        //aktualizacja z listy
+        ObservableList<Donor> data = FXCollections.observableArrayList();
+        for(Donor d : donorDAO.getAll()){
+            data.add(d);
+        }
+        donorsTable.setItems(data);
+        clearFields();
+    }
+
+    @FXML
+    public void OnDemandUpdateClick() {
+
+        if(donorIdFieldDonors.getText() != "") {
+            //todo dodawanie id grupy krwi (trzeba zmiodyfikować metode updateDonorById)
+            donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
+
+            //aktualizacja z listy
+            ObservableList<Donor> data = FXCollections.observableArrayList();
+            for (Donor d : donorDAO.getAll()) {
+                data.add(d);
+
+            }
+            donorsTable.setItems(data);
+            clearFields();
+        }else{
+            System.out.println("Nie wybrano krotki!");
+        }
+    }
+
+    @FXML
+    public void OnClearDemandFields(){
+
+        donorIdFieldDonors.clear();
+        donorNameFieldDonors.clear();
+        donorLastNameFieldDonors.clear();
+        donorAddressFieldDonors.clear();
+        donorPhoneNumberFieldDonors.clear();
+        donorPeselFieldDonors.clear();
+    }
+    //todo storage
+    @FXML
+    public void OnStorageAddClick() {
+        Donor d = new Donor();
+        d.setName(donorNameFieldDonors.getText());
+        d.setLastName(donorLastNameFieldDonors.getText());
+        d.setBloodGroupId(bloodGroupCombo.getSelectionModel().getSelectedIndex()); //todo to ma dodawać id krwi a nie index z comboboxa
+        d.setPhoneNumber(donorPhoneNumberFieldDonors.getText());
+        d.setAddress(donorAddressFieldDonors.getText());
+
+        donorDAO.create(d);
+        //aktualizacja z listy
+        ObservableList<Donor> data = FXCollections.observableArrayList();
+        for (Donor temp : donorDAO.getAll()) {
+            data.add(temp);
+        }
+        donorsTable.setItems(data);
+        clearFields();
+
+    }
+
+    @FXML
+    public void OnStorageTableClick() {
+
+        if (donorsTable.getSelectionModel().getSelectedIndex() != -1) {
+            Donor donor2update = (Donor) donorsTable.getSelectionModel().getSelectedItem();
+
+            donorIdFieldDonors.setText(Integer.toString(donor2update.getDonorId()));
+            donorNameFieldDonors.setText(donor2update.getName());
+            donorLastNameFieldDonors.setText(donor2update.getLastName());
+            donorAddressFieldDonors.setText(donor2update.getAddress());
+            donorPhoneNumberFieldDonors.setText(donor2update.getPhoneNumber());
+
+            donorIdFieldDonations.setText(Integer.toString(donor2update.getDonorId()));
+
+        } else {
+            System.out.println("Nie wybrano elementu!");
+        }
+
+
+    }
+
+    @FXML
+    public void OnStorageDeleteClick() {
+        //usuwanie z bazy
+        Donor donor2delete = (Donor) donorsTable.getSelectionModel().getSelectedItem();
+        int donorId = donor2delete.getDonorId();
+        donorDAO.deleteDonorById(donorId);
+        //aktualizacja z listy
+        ObservableList<Donor> data = FXCollections.observableArrayList();
+        for(Donor d : donorDAO.getAll()){
+            data.add(d);
+        }
+        donorsTable.setItems(data);
+        clearFields();
+    }
+
+    @FXML
+    public void OnStorageUpdateClick() {
+
+        if(donorIdFieldDonors.getText() != "") {
+            //todo dodawanie id grupy krwi (trzeba zmiodyfikować metode updateDonorById)
+            donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
+
+            //aktualizacja z listy
+            ObservableList<Donor> data = FXCollections.observableArrayList();
+            for (Donor d : donorDAO.getAll()) {
+                data.add(d);
+
+            }
+            donorsTable.setItems(data);
+            clearFields();
+        }else{
+            System.out.println("Nie wybrano krotki!");
+        }
+    }
+
+    @FXML
+    public void OnClearStorageFields(){
+
+        donorIdFieldDonors.clear();
+        donorNameFieldDonors.clear();
+        donorLastNameFieldDonors.clear();
+        donorAddressFieldDonors.clear();
+        donorPhoneNumberFieldDonors.clear();
+        donorPeselFieldDonors.clear();
+    }
+
+    //todo hospital
+    @FXML
+    public void OnHospitalAddClick() {
+        Donor d = new Donor();
+        d.setName(donorNameFieldDonors.getText());
+        d.setLastName(donorLastNameFieldDonors.getText());
+        d.setBloodGroupId(bloodGroupCombo.getSelectionModel().getSelectedIndex()); //todo to ma dodawać id krwi a nie index z comboboxa
+        d.setPhoneNumber(donorPhoneNumberFieldDonors.getText());
+        d.setAddress(donorAddressFieldDonors.getText());
+
+        donorDAO.create(d);
+        //aktualizacja z listy
+        ObservableList<Donor> data = FXCollections.observableArrayList();
+        for (Donor temp : donorDAO.getAll()) {
+            data.add(temp);
+        }
+        donorsTable.setItems(data);
+        clearFields();
+
+    }
+
+    @FXML
+    public void OnHospitalTableClick() {
+
+        if (donorsTable.getSelectionModel().getSelectedIndex() != -1) {
+            Donor donor2update = (Donor) donorsTable.getSelectionModel().getSelectedItem();
+
+            donorIdFieldDonors.setText(Integer.toString(donor2update.getDonorId()));
+            donorNameFieldDonors.setText(donor2update.getName());
+            donorLastNameFieldDonors.setText(donor2update.getLastName());
+            donorAddressFieldDonors.setText(donor2update.getAddress());
+            donorPhoneNumberFieldDonors.setText(donor2update.getPhoneNumber());
+
+            donorIdFieldDonations.setText(Integer.toString(donor2update.getDonorId()));
+
+        } else {
+            System.out.println("Nie wybrano elementu!");
+        }
+
+
+    }
+
+    @FXML
+    public void OnHospitalDeleteClick() {
+        //usuwanie z bazy
+        Donor donor2delete = (Donor) donorsTable.getSelectionModel().getSelectedItem();
+        int donorId = donor2delete.getDonorId();
+        donorDAO.deleteDonorById(donorId);
+        //aktualizacja z listy
+        ObservableList<Donor> data = FXCollections.observableArrayList();
+        for(Donor d : donorDAO.getAll()){
+            data.add(d);
+        }
+        donorsTable.setItems(data);
+        clearFields();
+    }
+
+    @FXML
+    public void OnHospitalUpdateClick() {
+
+        if(donorIdFieldDonors.getText() != "") {
+            //todo dodawanie id grupy krwi (trzeba zmiodyfikować metode updateDonorById)
+            donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
+
+            //aktualizacja z listy
+            ObservableList<Donor> data = FXCollections.observableArrayList();
+            for (Donor d : donorDAO.getAll()) {
+                data.add(d);
+
+            }
+            donorsTable.setItems(data);
+            clearFields();
+        }else{
+            System.out.println("Nie wybrano krotki!");
+        }
+    }
+
+    @FXML
+    public void OnClearHospitalFields(){
 
         donorIdFieldDonors.clear();
         donorNameFieldDonors.clear();

@@ -18,7 +18,7 @@ public class DonorDAO {
     static final String DB_URL = "jdbc:mysql://localhost:3306/bds";
     //  Database credentials
     static final String USER = "root";
-    static final String PASS = "root";
+    static final String PASS = "";
     private NamedParameterJdbcTemplate jdbc;
 
     public DonorDAO(){
@@ -32,7 +32,7 @@ public class DonorDAO {
         }
     }
 
-    public List<Donor> getAll() throws SQLException {
+    public List<Donor> getAll() {
         String sql = "SELECT * FROM donors";
         return jdbc.query(sql, new DonorRowMapper());
     }

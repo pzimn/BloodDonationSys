@@ -24,7 +24,7 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="799.0" prefWidth="1205.0">
               <children>
-                <TableView id="b" fx:id="donorsTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="611.0" prefWidth="662.0">
+                <TableView id="b" fx:id="donorsTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnDonorTableClick" prefHeight="611.0" prefWidth="662.0">
                   <columns>
                     <TableColumn fx:id="donorIdColDonors" maxWidth="5000.0" minWidth="10.0" prefWidth="63.0" text="DawcaID" />
                     <TableColumn fx:id="nameColDonors" maxWidth="5000.0" minWidth="10.0" prefWidth="91.0" text="Imię" />
@@ -35,9 +35,9 @@
                               <TableColumn fx:id="peselColDonors" maxWidth="5000.0" minWidth="10.0" prefWidth="106.0" text="PESEL" />
                   </columns>
                 </TableView>
-                <Button layoutX="786.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
-                <Button layoutX="917.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
-                <Button layoutX="1006.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
+                <Button layoutX="786.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnDonorAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                <Button layoutX="917.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnDonorDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                <Button layoutX="1006.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnDonorUpdateClick" prefHeight="25.0" text="Zmień" />
                         <GridPane layoutX="683.0" layoutY="66.0" prefHeight="210.0" prefWidth="498.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="192.0" />
@@ -95,7 +95,7 @@
                               <ComboBox fx:id="bloodGroupCombo" prefHeight="25.0" prefWidth="163.0" promptText="Grupa krwi" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
-                        <Button layoutX="1081.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnClearDonorsFields" text="Czyść pola" />
+                        <Button layoutX="1081.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnClearDonorFields" text="Czyść pola" />
               </children>
             </AnchorPane>
           </content>
@@ -104,7 +104,7 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="571.0" prefWidth="728.0">
                      <children>
-                        <TableView id="b" fx:id="stationsTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="611.0" prefWidth="662.0">
+                        <TableView id="b" fx:id="stationsTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnStationTableClick" prefHeight="611.0" prefWidth="662.0">
                            <columns>
                               <TableColumn fx:id="idColStations" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="ID" />
                               <TableColumn fx:id="nameColStations" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="Imię" />
@@ -159,9 +159,10 @@
                               </TextField>
                            </children>
                         </GridPane>
-                        <Button layoutX="762.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
-                        <Button layoutX="869.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
-                        <Button layoutX="942.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
+                        <Button layoutX="762.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnStationAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                        <Button layoutX="869.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnStationDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                        <Button layoutX="942.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnStationUpdateClick" prefHeight="25.0" text="Zmień" />
+                        <Button layoutX="1011.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnClearStationFields" prefHeight="25.0" text="Czyść pola" />
                      </children></AnchorPane>
           </content>
         </Tab>
@@ -169,7 +170,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView id="b" fx:id="bloodGroupsTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="611.0" prefWidth="662.0">
+                        <TableView id="b" fx:id="bloodGroupsTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnBloodGroupTableClick" prefHeight="611.0" prefWidth="662.0">
                            <columns>
                               <TableColumn fx:id="idColBloodGroups" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="ID" />
                               <TableColumn fx:id="groupColBloodGroups" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="Grupa" />
@@ -206,9 +207,10 @@
                               </TextField>
                            </children>
                         </GridPane>
-                        <Button layoutX="778.0" layoutY="151.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
-                        <Button layoutX="888.0" layoutY="151.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
-                        <Button layoutX="958.0" layoutY="151.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
+                        <Button layoutX="778.0" layoutY="151.0" mnemonicParsing="false" onAction="#OnBloodGroupAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                        <Button layoutX="888.0" layoutY="151.0" mnemonicParsing="false" onAction="#OnBloodGroupDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                        <Button layoutX="958.0" layoutY="151.0" mnemonicParsing="false" onAction="#OnBloodGroupUpdateClick" prefHeight="25.0" text="Zmień" />
+                        <Button layoutX="1023.0" layoutY="151.0" mnemonicParsing="false" onAction="#OnClearBloodGroupFields" prefHeight="25.0" text="Czyść pola" />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -216,7 +218,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView id="b" fx:id="bloodDonationsTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="611.0" prefWidth="662.0">
+                        <TableView id="b" fx:id="bloodDonationsTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnDonationTableClick" prefHeight="611.0" prefWidth="662.0">
                            <columns>
                               <TableColumn fx:id="idColDonations" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="ID" />
                               <TableColumn fx:id="donorIdColDonations" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="DawcaID" />
@@ -285,9 +287,10 @@
                               </TextField>
                            </children>
                         </GridPane>
-                        <Button layoutX="799.0" layoutY="272.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
-                        <Button layoutX="908.0" layoutY="272.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
-                        <Button layoutX="976.0" layoutY="272.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
+                        <Button layoutX="799.0" layoutY="272.0" mnemonicParsing="false" onAction="#OnDonationAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                        <Button layoutX="908.0" layoutY="272.0" mnemonicParsing="false" onAction="#OnDonationDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                        <Button layoutX="976.0" layoutY="272.0" mnemonicParsing="false" onAction="#OnDonationUpdateClick" prefHeight="25.0" text="Zmień" />
+                        <Button layoutX="1041.0" layoutY="272.0" mnemonicParsing="false" onAction="#OnClearDonationFields" prefHeight="25.0" text="Czysć pola" />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -295,10 +298,10 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView id="b" fx:id="bloodDemandTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="611.0" prefWidth="662.0">
+                        <TableView id="b" fx:id="bloodDemandTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnDemandTableClick" prefHeight="611.0" prefWidth="662.0">
                            <columns>
                               <TableColumn fx:id="idColDemand" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="ID" />
-                              <TableColumn fx:id="warehouseIdColDemand" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="ID_magazynu" />
+                              <TableColumn fx:id="storageIdColDemand" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="ID_magazynu" />
                               <TableColumn fx:id="bloodGroupIdColDemand" maxWidth="5000.0" minWidth="10.0" prefWidth="130.0" text="ID_grupy_krwi" />
                               <TableColumn fx:id="quantityColDemand" maxWidth="5000.0" minWidth="10.0" prefWidth="165.0" text="ilość_potrzebnej_krwi" />
                            </columns>
@@ -330,7 +333,7 @@
                                     <Insets bottom="4.0" />
                                  </padding>
                               </TextField>
-                              <TextField fx:id="warehouseIdFieldDemand" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <TextField fx:id="storageIdFieldDemand" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="4.0" />
                                  </GridPane.margin>
@@ -350,9 +353,10 @@
                               </TextField>
                            </children>
                         </GridPane>
-                        <Button layoutX="804.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
-                        <Button layoutX="915.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
-                        <Button layoutX="988.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
+                        <Button layoutX="804.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnDemandAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                        <Button layoutX="915.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnDemandDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                        <Button layoutX="988.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnDemandUpdateClick" prefHeight="25.0" text="Zmień" />
+                        <Button layoutX="1055.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnClearDemandFields" prefHeight="25.0" text="Czyść pola" />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -360,14 +364,14 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView id="b" fx:id="bloodWarehouseTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnTableClick" prefHeight="611.0" prefWidth="662.0">
+                        <TableView id="b" fx:id="bloodStorageTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnStorageTableClick" prefHeight="611.0" prefWidth="662.0">
                            <columns>
-                              <TableColumn fx:id="idColWarehouse" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="ID" />
-                              <TableColumn fx:id="stationIdColWarehouse" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="ID_jednostki_krwiodawstwa" />
-                              <TableColumn fx:id="sizeColWarehouse" maxWidth="5000.0" minWidth="10.0" prefWidth="130.0" text="Aktualna objętość krwi" />
-                              <TableColumn fx:id="bloodGroupIdColWarehouse" maxWidth="5000.0" minWidth="10.0" prefWidth="101.0" text="ID_grupy_krwi" />
-                              <TableColumn fx:id="phoneNumberColWarehouse" maxWidth="5000.0" minWidth="10.0" prefWidth="155.0" text="Numer Telefonu" />
-                              <TableColumn fx:id="addressColWarehouse" maxWidth="5000.0" minWidth="10.0" prefWidth="121.0" text="Adres" />
+                              <TableColumn fx:id="idColStorage" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="ID" />
+                              <TableColumn fx:id="stationIdColStorage" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="ID_jednostki_krwiodawstwa" />
+                              <TableColumn fx:id="valueColStorage" maxWidth="5000.0" minWidth="10.0" prefWidth="130.0" text="Aktualna objętość krwi" />
+                              <TableColumn fx:id="bloodGroupIdColStorage" maxWidth="5000.0" minWidth="10.0" prefWidth="101.0" text="ID_grupy_krwi" />
+                              <TableColumn fx:id="phoneNumberColStorage" maxWidth="5000.0" minWidth="10.0" prefWidth="155.0" text="Numer Telefonu" />
+                              <TableColumn fx:id="addressColStorage" maxWidth="5000.0" minWidth="10.0" prefWidth="121.0" text="Adres" />
                            </columns>
                         </TableView>
                         <GridPane layoutX="693.0" layoutY="54.0" prefHeight="210.0" prefWidth="498.0">
@@ -390,7 +394,7 @@
                               <Label text="Aktualna objętość krwi:" GridPane.rowIndex="2" />
                               <Label text="ID_grupy_krwi:" GridPane.rowIndex="3" />
                               <Label prefHeight="17.0" prefWidth="94.0" text="Numer Telefonu:" GridPane.rowIndex="4" />
-                              <TextField id="do" fx:id="idFieldWarehouse" editable="false" prefWidth="200.0" GridPane.columnIndex="1">
+                              <TextField id="do" fx:id="idFieldStorage" editable="false" prefWidth="200.0" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="4.0" />
                                  </GridPane.margin>
@@ -398,7 +402,7 @@
                                     <Insets bottom="4.0" />
                                  </padding>
                               </TextField>
-                              <TextField fx:id="stationIdFieldWarehouse" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <TextField fx:id="stationIdFieldStorage" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="4.0" />
                                  </GridPane.margin>
@@ -406,33 +410,101 @@
                                     <Insets bottom="4.0" />
                                  </padding>
                               </TextField>
-                              <TextField fx:id="sizeFieldWarehouse" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <TextField fx:id="valueFieldStorage" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <padding>
                                     <Insets bottom="4.0" />
                                  </padding>
                               </TextField>
-                              <TextField fx:id="bloodGroupIdFieldWarehouse" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <TextField fx:id="bloodGroupIdFieldStorage" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <padding>
                                     <Insets bottom="4.0" />
                                  </padding>
                               </TextField>
-                              <TextField fx:id="phoneNumberFieldWarehouse" prefHeight="15.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              <TextField fx:id="phoneNumberFieldStorage" prefHeight="15.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <padding>
                                     <Insets bottom="4.0" />
                                  </padding>
                               </TextField>
                               <Label prefHeight="17.0" prefWidth="94.0" text="Adres:" GridPane.rowIndex="5" />
-                              <TextField fx:id="addressFieldWarehouse" prefHeight="15.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                              <TextField fx:id="addressFieldStorage" prefHeight="15.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <padding>
                                     <Insets bottom="4.0" />
                                  </padding>
                               </TextField>
                            </children>
                         </GridPane>
-                        <Button layoutX="785.0" layoutY="284.0" mnemonicParsing="false" onAction="#OnAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
-                        <Button layoutX="895.0" layoutY="284.0" mnemonicParsing="false" onAction="#OnDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
-                        <Button layoutX="962.0" layoutY="284.0" mnemonicParsing="false" onAction="#OnUpdateClick" prefHeight="25.0" text="Zmień" />
+                        <Button layoutX="785.0" layoutY="284.0" mnemonicParsing="false" onAction="#OnStorageAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                        <Button layoutX="895.0" layoutY="284.0" mnemonicParsing="false" onAction="#OnStorageDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                        <Button layoutX="962.0" layoutY="284.0" mnemonicParsing="false" onAction="#OnStorageUpdateClick" prefHeight="25.0" text="Zmień" />
+                        <Button layoutX="1031.0" layoutY="284.0" mnemonicParsing="false" onAction="#OnClearStorageFields" prefHeight="25.0" text="Czyść pola" />
                      </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Szpital">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView id="b" fx:id="hospitalTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#OnHospitalTableClick" prefHeight="611.0" prefWidth="662.0">
+                           <columns>
+                              <TableColumn fx:id="idColHospital" maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="ID" />
+                              <TableColumn fx:id="nameColHospital" maxWidth="5000.0" minWidth="10.0" prefWidth="83.0" text="Imię" />
+                              <TableColumn fx:id="addressColHospital" maxWidth="5000.0" minWidth="10.0" prefWidth="130.0" text="Adres" />
+                              <TableColumn fx:id="phoneNumberColHospital" maxWidth="5000.0" minWidth="10.0" prefWidth="155.0" text="Numer Telefonu" />
+                           </columns>
+                        </TableView>
+                        <GridPane layoutX="692.0" layoutY="56.0" prefHeight="210.0" prefWidth="498.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="192.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="349.0" minWidth="10.0" prefWidth="306.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" text="ID" />
+                              <Label text="Imię:" GridPane.rowIndex="1" />
+                              <Label text="Adres:" GridPane.rowIndex="2" />
+                              <Label text="Numer telefonu:" GridPane.rowIndex="3" />
+                              <TextField id="do" fx:id="idFieldHospital" editable="false" prefWidth="200.0" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="nameFieldHospital" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="addressFieldHospital" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                              <TextField fx:id="phoneNumberFieldHospital" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <padding>
+                                    <Insets bottom="4.0" />
+                                 </padding>
+                              </TextField>
+                           </children>
+                        </GridPane>
+                        <Button layoutX="834.0" layoutY="266.0" mnemonicParsing="false" onAction="#OnHospitalAddClick" prefHeight="25.0" prefWidth="94.0" text="Dodaj" />
+                        <Button layoutX="941.0" layoutY="266.0" mnemonicParsing="false" onAction="#OnHospitalDeleteClick" prefHeight="25.0" prefWidth="54.0" text="Usuń" />
+                        <Button layoutX="1006.0" layoutY="266.0" mnemonicParsing="false" onAction="#OnHospitalUpdateClick" prefHeight="25.0" text="Zmień" />
+                        <Button layoutX="1070.0" layoutY="266.0" mnemonicParsing="false" onAction="#OnClearHospitalFields" prefHeight="25.0" text="Czyść pola" />
+                     </children>
+                  </AnchorPane>
               </content>
             </Tab>
       </tabs>
