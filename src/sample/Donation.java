@@ -7,6 +7,16 @@ public class Donation {
     String date;
     int stationId;
 
+    public int getBloodGroupId() {
+        return bloodGroupId;
+    }
+
+    public void setBloodGroupId(int bloodGroupId) {
+        this.bloodGroupId = bloodGroupId;
+    }
+
+    int bloodGroupId;
+
     @Override
     public String toString() {
         return "Donation{" +
@@ -18,11 +28,13 @@ public class Donation {
                 '}';
     }
 
-    public Donation(int donorId, float bloodLitres, String date, int stationId) {
+    public Donation(int donorId, float bloodLitres, String date, int stationId, int bloodGroupId) {
         this.donorId = donorId;
         this.bloodLitres = bloodLitres;
         this.date = date;
         this.stationId = stationId;
+        this.bloodGroupId = bloodGroupId;
+
     }
 
     public Donation(){}

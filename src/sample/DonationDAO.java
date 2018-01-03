@@ -47,26 +47,28 @@ public class DonationDAO {
         jdbc.update(sql, namedParameters);
     }
 
-    public void updateDonationById(int id, int donorId, float amount, String date, int stationId){
-        String sql = "UPDATE donations SET donor_id = :donorId, amount = :amount, date = :date, station_id = :stationId WHERE id = :id";
+    public void updateDonationById(int id, int donorId, float amount, String date, int stationId, int bloodGroupId){
+        String sql = "UPDATE donations SET donor_id = :donorId, amount = :amount, date = :date, station_id = :stationId, blood_group_id = :bloodGroupId WHERE id = :id";
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         namedParameters.addValue("donorId", donorId);
         namedParameters.addValue("amount", amount);
         namedParameters.addValue("date", date);
         namedParameters.addValue("stationId", stationId);
+        namedParameters.addValue("bloodGroupId", bloodGroupId);
         namedParameters.addValue("id", id);
         jdbc.update(sql, namedParameters);
 
     }
 
     public void create(Donation donation){
-        String sql = "INSERT INTO donations(donor_id, station_id, amount, date)" +
-                                    "VALUES (:donor_id, :station_id, :amount, :date)";
+        String sql = "INSERT INTO donations(donor_id, station_id, amount, date, blood_group_id)" +
+                                    "VALUES (:donor_id, :station_id, :amount, :date, :bloodGroupId)";
         Map namedParameters = new HashMap();
         namedParameters.put("donor_id", donation.getDonorId());
         namedParameters.put("station_id", donation.getStationId());
         namedParameters.put("amount", donation.getBloodLitres());
         namedParameters.put("date", donation.getDate());
+        namedParameters.put("blood_group_id", donation.getBloodGroupId());
         jdbc.update(sql, namedParameters);
         System.out.println("Created record with: " + donation.toString());
     }
@@ -82,6 +84,7 @@ class donationRowMapper implements RowMapper<Donation>{
         donation.setDate(resultSet.getString("date"));
         donation.setBloodLitres(resultSet.getFloat("amount"));
         donation.setStationId(resultSet.getInt("station_id"));
+        donation.setBloodGroupId(resultSet.getInt("blood_group_id"));
         return donation;
     }
 
