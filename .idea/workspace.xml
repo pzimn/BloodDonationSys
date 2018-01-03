@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Dodanie pozostałych zakładek do GUI">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
-      <change beforePath="$PROJECT_DIR$/src/sample/StationDAO.java" afterPath="$PROJECT_DIR$/src/sample/StationDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Donation.java" afterPath="$PROJECT_DIR$/src/sample/Donation.java" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DonationDAO.java" afterPath="$PROJECT_DIR$/src/sample/DonationDAO.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="723" column="202" lean-forward="false" selection-start-line="723" selection-start-column="202" selection-end-line="723" selection-end-column="202" />
+            <state relative-caret-position="216">
+              <caret line="590" column="23" lean-forward="true" selection-start-line="590" selection-start-column="23" selection-end-line="590" selection-end-column="23" />
               <folding>
                 <element signature="method#OnDonorTableClick#0;class#Controller#0" expanded="false" />
                 <element signature="method#OnDonorDeleteClick#0;class#Controller#0" expanded="false" />
@@ -88,7 +90,6 @@
                 <element signature="method#OnBloodGroupTableClick#0;class#Controller#0" expanded="false" />
                 <element signature="method#OnBloodGroupDeleteClick#0;class#Controller#0" expanded="false" />
                 <element signature="method#OnClearBloodGroupFields#0;class#Controller#0" expanded="false" />
-                <element signature="method#OnDonationTableClick#0;class#Controller#0" expanded="false" />
                 <element signature="method#OnDonationDeleteClick#0;class#Controller#0" expanded="false" />
                 <element signature="method#OnClearDonationFields#0;class#Controller#0" expanded="false" />
                 <element signature="method#OnDemandTableClick#0;class#Controller#0" expanded="false" />
@@ -108,6 +109,41 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Donation.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/Donation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+              <folding>
+                <element signature="e#185#186#0" expanded="true" />
+                <element signature="e#220#221#0" expanded="true" />
+                <element signature="e#273#274#0" expanded="true" />
+                <element signature="e#321#322#0" expanded="true" />
+                <element signature="e#1049#1050#0" expanded="true" />
+                <element signature="e#1074#1075#0" expanded="true" />
+                <element signature="e#1107#1108#0" expanded="true" />
+                <element signature="e#1135#1136#0" expanded="true" />
+                <element signature="e#1166#1167#0" expanded="true" />
+                <element signature="e#1196#1197#0" expanded="true" />
+                <element signature="e#1239#1240#0" expanded="true" />
+                <element signature="e#1277#1278#0" expanded="true" />
+                <element signature="e#1314#1315#0" expanded="true" />
+                <element signature="e#1348#1349#0" expanded="true" />
+                <element signature="e#1401#1402#0" expanded="true" />
+                <element signature="e#1447#1448#0" expanded="true" />
+                <element signature="e#1478#1479#0" expanded="true" />
+                <element signature="e#1505#1506#0" expanded="true" />
+                <element signature="e#1545#1546#0" expanded="true" />
+                <element signature="e#1577#1578#0" expanded="true" />
+                <element signature="e#1610#1611#0" expanded="true" />
+                <element signature="e#1642#1643#0" expanded="true" />
+                <element signature="e#1689#1690#0" expanded="true" />
+                <element signature="e#1731#1732#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Demand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Demand.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -121,14 +157,14 @@
       <file leaf-file-name="DonationDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/DonationDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="56" column="43" lean-forward="true" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
+            <state relative-caret-position="284">
+              <caret line="66" column="64" lean-forward="false" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
               <folding>
-                <marker date="1515016505917" expanded="true" signature="1050:1073" ph="SELECT * FRO... donations" />
-                <marker date="1515016505917" expanded="true" signature="1208:1246" ph="SELECT * FRO... donations" />
-                <marker date="1515016505917" expanded="true" signature="1536:1572" ph="DELETE FROM donations... " />
-                <marker date="1515016505917" expanded="true" signature="1828:1940" ph="UPDATE donations... " />
-                <marker date="1515016505917" expanded="true" signature="2392:2537" ph="INSERT INTO donations... " />
+                <marker date="1515023727367" expanded="true" signature="1050:1073" ph="SELECT * FRO... donations" />
+                <marker date="1515023727367" expanded="true" signature="1208:1246" ph="SELECT * FRO... donations" />
+                <marker date="1515023727367" expanded="true" signature="1536:1572" ph="DELETE FROM donations... " />
+                <marker date="1515023727367" expanded="true" signature="1846:1990" ph="UPDATE donations... " />
+                <marker date="1515023727367" expanded="true" signature="2506:2664" ph="INSERT INTO donations... " />
               </folding>
             </state>
           </provider>
@@ -178,13 +214,11 @@
         <option value="$PROJECT_DIR$/src/sample/klasa.java" />
         <option value="$PROJECT_DIR$/src/sample/Donor.java" />
         <option value="$PROJECT_DIR$/src/sample/Station.java" />
-        <option value="$PROJECT_DIR$/src/sample/Donation.java" />
         <option value="$PROJECT_DIR$/src/sample/Storage.java" />
         <option value="$PROJECT_DIR$/src/sample/Demand.java" />
         <option value="$PROJECT_DIR$/src/sample/Blood_group.java" />
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/src/sample/BloodGroupDAO.java" />
-        <option value="$PROJECT_DIR$/src/sample/DonationDAO.java" />
         <option value="$PROJECT_DIR$/src/sample/DonorDAO.java" />
         <option value="$PROJECT_DIR$/src/sample/DemandDAO.java" />
         <option value="$PROJECT_DIR$/src/sample/StorageDAO.java" />
@@ -192,6 +226,8 @@
         <option value="$PROJECT_DIR$/src/sample/HospitalDAO.java" />
         <option value="$PROJECT_DIR$/src/sample/StationDAO.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
+        <option value="$PROJECT_DIR$/src/sample/DonationDAO.java" />
+        <option value="$PROJECT_DIR$/src/sample/Donation.java" />
       </list>
     </option>
   </component>
@@ -202,7 +238,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="793" />
     <option name="width" value="814" />
     <option name="height" value="867" />
@@ -226,9 +262,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -252,6 +285,9 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -434,14 +470,15 @@
       <workItem from="1512580229795" duration="12975000" />
       <workItem from="1515001538945" duration="6133000" />
       <workItem from="1515017007627" duration="6221000" />
+      <workItem from="1515023369647" duration="512000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57916000" />
+    <option name="totallyTimeSpent" value="58428000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -452,7 +489,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3211876" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26299044" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26193002" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928476" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -586,24 +623,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2788">
           <caret line="164" column="114" lean-forward="false" selection-start-line="164" selection-start-column="114" selection-end-line="164" selection-end-column="114" />
           <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Donation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
-            <element signature="e#734#735#0" expanded="false" />
-            <element signature="e#759#760#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -713,20 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DonationDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="56" column="43" lean-forward="true" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
-          <folding>
-            <marker date="1515016505917" expanded="true" signature="1050:1073" ph="SELECT * FRO... donations" />
-            <marker date="1515016505917" expanded="true" signature="1208:1246" ph="SELECT * FRO... donations" />
-            <marker date="1515016505917" expanded="true" signature="1536:1572" ph="DELETE FROM donations... " />
-            <marker date="1515016505917" expanded="true" signature="1828:1940" ph="UPDATE donations... " />
-            <marker date="1515016505917" expanded="true" signature="2392:2537" ph="INSERT INTO donations... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Demand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -737,8 +749,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="723" column="202" lean-forward="false" selection-start-line="723" selection-start-column="202" selection-end-line="723" selection-end-column="202" />
+        <state relative-caret-position="216">
+          <caret line="590" column="23" lean-forward="true" selection-start-line="590" selection-start-column="23" selection-end-line="590" selection-end-column="23" />
           <folding>
             <element signature="method#OnDonorTableClick#0;class#Controller#0" expanded="false" />
             <element signature="method#OnDonorDeleteClick#0;class#Controller#0" expanded="false" />
@@ -751,7 +763,6 @@
             <element signature="method#OnBloodGroupTableClick#0;class#Controller#0" expanded="false" />
             <element signature="method#OnBloodGroupDeleteClick#0;class#Controller#0" expanded="false" />
             <element signature="method#OnClearBloodGroupFields#0;class#Controller#0" expanded="false" />
-            <element signature="method#OnDonationTableClick#0;class#Controller#0" expanded="false" />
             <element signature="method#OnDonationDeleteClick#0;class#Controller#0" expanded="false" />
             <element signature="method#OnClearDonationFields#0;class#Controller#0" expanded="false" />
             <element signature="method#OnDemandTableClick#0;class#Controller#0" expanded="false" />
@@ -766,6 +777,53 @@
             <element signature="method#OnHospitalDeleteClick#0;class#Controller#0" expanded="false" />
             <element signature="method#OnHospitalUpdateClick#0;class#Controller#0" expanded="false" />
             <element signature="method#OnClearHospitalFields#0;class#Controller#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/DonationDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="66" column="64" lean-forward="false" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
+          <folding>
+            <marker date="1515023727367" expanded="true" signature="1050:1073" ph="SELECT * FRO... donations" />
+            <marker date="1515023727367" expanded="true" signature="1208:1246" ph="SELECT * FRO... donations" />
+            <marker date="1515023727367" expanded="true" signature="1536:1572" ph="DELETE FROM donations... " />
+            <marker date="1515023727367" expanded="true" signature="1846:1990" ph="UPDATE donations... " />
+            <marker date="1515023727367" expanded="true" signature="2506:2664" ph="INSERT INTO donations... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Donation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+          <folding>
+            <element signature="e#185#186#0" expanded="true" />
+            <element signature="e#220#221#0" expanded="true" />
+            <element signature="e#273#274#0" expanded="true" />
+            <element signature="e#321#322#0" expanded="true" />
+            <element signature="e#1049#1050#0" expanded="true" />
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1107#1108#0" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1166#1167#0" expanded="true" />
+            <element signature="e#1196#1197#0" expanded="true" />
+            <element signature="e#1239#1240#0" expanded="true" />
+            <element signature="e#1277#1278#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
+            <element signature="e#1348#1349#0" expanded="true" />
+            <element signature="e#1401#1402#0" expanded="true" />
+            <element signature="e#1447#1448#0" expanded="true" />
+            <element signature="e#1478#1479#0" expanded="true" />
+            <element signature="e#1505#1506#0" expanded="true" />
+            <element signature="e#1545#1546#0" expanded="true" />
+            <element signature="e#1577#1578#0" expanded="true" />
+            <element signature="e#1610#1611#0" expanded="true" />
+            <element signature="e#1642#1643#0" expanded="true" />
+            <element signature="e#1689#1690#0" expanded="true" />
+            <element signature="e#1731#1732#0" expanded="true" />
           </folding>
         </state>
       </provider>

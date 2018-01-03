@@ -611,13 +611,11 @@ public class Controller {
             bloodLitresFieldDonations.setText(Float.toString(donation2update.getBloodLitres()));
             dateFieldDonations.setText(donation2update.getDate());
             stationIdFieldDonations.setText(Integer.toString(donation2update.getStationId()));
-            //bloodGroupIdFieldDonations.setText(Integer.toString(donation2update.getBloodGroupId())); //todo nie wiem czy w klasie donation tego nie brakuje
+            bloodGroupIdFieldDonations.setText(Integer.toString(donation2update.getBloodGroupId()));
 
         } else {
             System.out.println("Nie wybrano elementu!");
         }
-
-
     }
 
     @FXML
@@ -638,8 +636,7 @@ public class Controller {
     public void OnDonationUpdateClick() {
 
         if(idFieldDonations.getText() != "") {
-            donationDAO.updateDonationById(Integer.parseInt(idFieldDonations.getText()), Integer.parseInt(donorIdFieldDonations.getText()), Float.parseFloat(bloodLitresFieldDonations.getText()), dateFieldDonations.getText(), Integer.parseInt(stationIdFieldDonations.getText()));
-
+            donationDAO.updateDonationById(Integer.parseInt(idFieldDonations.getText()), Integer.parseInt(donorIdFieldDonations.getText()), Float.parseFloat(bloodLitresFieldDonations.getText()), dateFieldDonations.getText(), Integer.parseInt(stationIdFieldDonations.getText()), Integer.parseInt(bloodGroupIdFieldDonations.getText()));
             //todo grupa krwi z comboboxa
 
             //update tabeli donation
