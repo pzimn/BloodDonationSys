@@ -12,10 +12,10 @@ import java.util.Map;
 
 
 public class BloodGroupDAO {
-    static final String DB_URL = "jdbc:mysql://localhost:3306/bds";
+    static final String DB_URL = "jdbc:mysql://vpnmalina.mooo.com:3306/bds";
     //  Database credentials
-    static final String USER = "root";
-    static final String PASS = "";
+    static final String USER = "user";
+    static final String PASS = "Nosacz!@$";
     private NamedParameterJdbcTemplate jdbc;
 
     public BloodGroupDAO(){

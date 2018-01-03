@@ -12,10 +12,10 @@ import java.util.Map;
 
 
 public class StorageDAO {
-    static final String DB_URL = "jdbc:mysql://localhost:3306/bds";
+    static final String DB_URL = "jdbc:mysql://vpnmalina.mooo.com:3306/bds";
     //  Database credentials
-    static final String USER = "root";
-    static final String PASS = "";
+    static final String USER = "user";
+    static final String PASS = "Nosacz!@$";
     private NamedParameterJdbcTemplate jdbc;
 
     public StorageDAO(){
@@ -30,25 +30,25 @@ public class StorageDAO {
     }
 
     public List<Storage> getAll() {
-        String sql = "SELECT * FROM storage";
+        String sql = "SELECT * FROM storages";
         return jdbc.query(sql, new StorageMapper());
     }
 
     public Storage findByStorageId(int id){
-        String sql = "SELECT * FROM storage WHERE id = :id";
+        String sql = "SELECT * FROM storages WHERE id = :id";
         SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
         Storage storage = (Storage) jdbc.queryForObject(sql, namedParameters, new StorageMapper());
         return storage;
     }
 
     public void deleteStorageById(int id){
-        String sql = "DELETE FROM storage WHERE id = :id";
+        String sql = "DELETE FROM storages WHERE id = :id";
         SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
         jdbc.update(sql, namedParameters);
     }
 
     public void updateStorageById(int id, int stationId, float bloodValue, int bloodGroupId, String phoneNumber, String address ){
-        String sql = "UPDATE storage SET station_id = :stationId, blood_value = :bloodValue, blood_group_id = :bloodGroupId, phone_number = :phoneNumber, address = :address  WHERE id = :id";
+        String sql = "UPDATE storages SET station_id = :stationId, blood_value = :bloodValue, blood_group_id = :bloodGroupId, phone_number = :phoneNumber, address = :address  WHERE id = :id";
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         namedParameters.addValue("stationId", stationId);
         namedParameters.addValue("bloodValue", bloodValue);
@@ -61,7 +61,7 @@ public class StorageDAO {
     }
 
     public void create(Storage storage){
-        String sql = "INSERT INTO storage(station_id, blood_value, blood_group_id, phone_number, address)" +
+        String sql = "INSERT INTO storages(station_id, blood_value, blood_group_id, phone_number, address)" +
                 "VALUES (:stationId, :bloodValue, :bloodGroupId, :phoneNumber, :address)";
         Map namedParameters = new HashMap();
         namedParameters.put("stationId", storage.getStationId());

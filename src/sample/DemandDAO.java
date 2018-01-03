@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Map;
 
 public class DemandDAO {
-    static final String DB_URL = "jdbc:mysql://localhost:3306/bds";
+    static final String DB_URL = "jdbc:mysql://vpnmalina.mooo.com:3306/bds";
     //  Database credentials
-    static final String USER = "root";
-    static final String PASS = "";
+    static final String USER = "user";
+    static final String PASS = "Nosacz!@$";
     private NamedParameterJdbcTemplate jdbc;
 
     public DemandDAO() {
@@ -29,26 +29,26 @@ public class DemandDAO {
         }
     }
 
-    public List<Station> getAll() {
-        String sql = "SELECT * FROM demand";
-        return jdbc.query(sql, new stationRowMapper());
+    public List<Demand> getAll() {
+        String sql = "SELECT * FROM demands";
+        return jdbc.query(sql, new demandRowMapper());
     }
 
     public Demand findByDemandId(int id){
-        String sql = "SELECT * FROM demand WHERE id = :id";
+        String sql = "SELECT * FROM demands WHERE id = :id";
         SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
         Demand demand = (Demand) jdbc.queryForObject(sql, namedParameters, new demandRowMapper());
         return demand;
     }
 
     public void deletedemandById(int id){
-        String sql = "DELETE FROM demand WHERE id = :id";
+        String sql = "DELETE FROM demands WHERE id = :id";
         SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
         jdbc.update(sql, namedParameters);
     }
 
     public void updateDemandById(int id, int storageId, int bloodGroupId, float quantity){
-        String sql = "UPDATE demand SET storage_id = :storageId, blood_group_id = :bloodGroupId, quantity = :quantity WHERE id = :id";
+        String sql = "UPDATE demands SET storage_id = :storageId, blood_group_id = :bloodGroupId, quantity = :quantity WHERE id = :id";
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         namedParameters.addValue("storageId", storageId);
         namedParameters.addValue("bloodGroupId", bloodGroupId);
@@ -59,7 +59,7 @@ public class DemandDAO {
     }
 
     public void create(Demand demand){
-        String sql = "INSERT INTO demand(storage_id,blood_group_id,quantity)" +
+        String sql = "INSERT INTO demands(storage_id,blood_group_id,quantity)" +
                 "VALUES (:storageId, :bloodGroupId, :quantity)";
         Map namedParameters = new HashMap();
         namedParameters.put("storageId", demand.getStorageId());
