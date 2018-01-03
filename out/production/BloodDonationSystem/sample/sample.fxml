@@ -92,7 +92,7 @@
                                  </padding>
                               </TextField>
                               <Label text="Grupa krwi:" GridPane.rowIndex="3" />
-                              <ComboBox fx:id="bloodGroupCombo" prefHeight="25.0" prefWidth="163.0" promptText="Grupa krwi" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <ComboBox fx:id="bloodGroupComboDonors" prefHeight="25.0" prefWidth="163.0" promptText="Grupa krwi" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                         <Button layoutX="1081.0" layoutY="287.0" mnemonicParsing="false" onAction="#OnClearDonorFields" text="Czyść pola" />

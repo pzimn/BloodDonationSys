@@ -9,7 +9,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.BlockingDeque;
 
 public class Controller {
@@ -56,7 +58,8 @@ public class Controller {
     TextField donorPeselFieldDonors;
 
     @FXML
-    ComboBox bloodGroupCombo;
+    ComboBox bloodGroupComboDonors;
+    List<Integer> bloodComboIdsDonors = new ArrayList<>();
 
     //jednostki krwiodawstwa
     @FXML
@@ -197,6 +200,7 @@ public class Controller {
     TextField addressFieldHospital;
     @FXML
     TextField phoneNumberFieldHospital;
+    private HospitalDAO hospitalDAO;
 
     private void clearFields(){
         System.out.println("Ta metoda musi być zmieniona! (void clearFields())");
@@ -205,15 +209,6 @@ public class Controller {
 
     @FXML
     public void initialize() {
-
-        //init comboboxa grupa krwi
-        //todo pobieranie grup krwi z bazy
-        ObservableList<String> combo = FXCollections.observableArrayList();
-        combo.add("grupa1");
-        combo.add("grupa2");
-        combo.add("grupa3");
-
-        bloodGroupCombo.setItems(combo);
 
         //donors
         donorIdColDonors.setCellValueFactory(new PropertyValueFactory<Donor, Integer>("donorId"));
@@ -285,11 +280,47 @@ public class Controller {
         }
         bloodDonationsTable.setItems(datad);
 
-        //todo
-        //update tabeli grup
+        //update tabeli blood gourp
+        ObservableList<Blood_group> datan = FXCollections.observableArrayList();
+        for (Blood_group d : bloodDAO.getAll()) {
+            datan.add(d);
+
+        }
+        bloodGroupsTable.setItems(datan);
+
         //update tabeli demand
+        ObservableList<Demand> datag = FXCollections.observableArrayList();
+        for (Demand d : demandDAO.getAll()) {
+            datag.add(d);
+
+        }
+        bloodDemandTable.setItems(datag);
         //update tabeli storage
+        ObservableList<Storage> datagg = FXCollections.observableArrayList();
+        for (Storage d : storageDAO.getAll()) {
+            datagg.add(d);
+
+        }
+        bloodStorageTable.setItems(datagg);
+
         //update tabeli hospital
+       /* ObservableList<Hospital> datah = FXCollections.observableArrayList();
+        for (Hospital d : hospitalDAO.getAll()) {
+            datah.add(d);
+        }
+        hospitalTable.setItems(datah);
+*/
+
+        //init combo boxów
+        //init comboboxa donors
+
+        ObservableList<String> combo1 = FXCollections.observableArrayList();
+        for(Blood_group b : bloodDAO.getAll()){
+            combo1.add(b.getGroup());
+            bloodComboIdsDonors.add(b.getId());
+        }
+
+        bloodGroupComboDonors.setItems(combo1);
 
     } //todo
 
@@ -299,7 +330,8 @@ public class Controller {
         Donor d = new Donor();
         d.setName(donorNameFieldDonors.getText());
         d.setLastName(donorLastNameFieldDonors.getText());
-        d.setBloodGroupId(bloodGroupCombo.getSelectionModel().getSelectedIndex()); //todo to ma dodawać id krwi a nie index z comboboxa
+        //d.setBloodGroupId(bloodGroupComboDonors.getSelectionModel().getSelectedIndex()); //todo to ma dodawać id krwi a nie index z comboboxa
+        d.setBloodGroupId(bloodComboIdsDonors.get(bloodGroupComboDonors.getSelectionModel().getSelectedIndex()));
         d.setPhoneNumber(donorPhoneNumberFieldDonors.getText());
         d.setAddress(donorAddressFieldDonors.getText());
 
@@ -352,7 +384,7 @@ public class Controller {
 
         if(donorIdFieldDonors.getText() != "") {
             //todo dodawanie id grupy krwi (trzeba zmiodyfikować metode updateDonorById)
-            donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
+           // donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
 
             //aktualizacja z listy
             ObservableList<Donor> data = FXCollections.observableArrayList();
@@ -467,6 +499,8 @@ public class Controller {
     public void OnBloodGroupAddClick() {
         Blood_group d = new Blood_group();
         d.setGroup(groupFieldBloodGroups.getText());
+
+        bloodDAO.create(d);
         //aktualizacja z listy
         ObservableList<Blood_group> data = FXCollections.observableArrayList();
         for (Blood_group temp : bloodDAO.getAll()) {
@@ -499,7 +533,7 @@ public class Controller {
         //usuwanie z bazy
         Blood_group blood2delete = (Blood_group) bloodGroupsTable.getSelectionModel().getSelectedItem();
         int bloodId = blood2delete.getId();
-        //bloodDAO.deleteGroupById(bloodId);
+        bloodDAO.deleteBloodGroupById(bloodId);
 
         //aktualizacja z listy
         ObservableList<Blood_group> data = FXCollections.observableArrayList();
@@ -513,15 +547,16 @@ public class Controller {
     }
 
     @FXML
-    public void OnBloodGroupUpdateClick() {//todo
+    public void OnBloodGroupUpdateClick() {
 
-        if(donorIdFieldDonors.getText() != "") {
-            //todo dodawanie id grupy krwi (trzeba zmiodyfikować metode updateDonorById)
-            donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
+        if(idFieldBloodGroups.getText() != "") {
+
+            //donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
+            bloodDAO.updateBloodGroupById(Integer.parseInt(idFieldBloodGroups.getText()), groupFieldBloodGroups.getText());
 
             //aktualizacja z listy
-            ObservableList<Donor> data = FXCollections.observableArrayList();
-            for (Donor d : donorDAO.getAll()) {
+            ObservableList<Blood_group> data = FXCollections.observableArrayList();
+            for (Blood_group d : bloodDAO.getAll()) {
                 data.add(d);
 
             }
@@ -631,7 +666,7 @@ public class Controller {
     public void OnDemandAddClick() {
         Demand d = new Demand();
         //d.setStorageId();
-        d.setBloodGroupId(bloodGroupCombo.getSelectionModel().getSelectedIndex());
+        d.setBloodGroupId(bloodGroupComboDonors.getSelectionModel().getSelectedIndex()); //todo combo
         d.setQuantity(Integer.parseInt(quantityFieldDemand.getText()));
 
         demandDAO.create(d);
@@ -683,7 +718,7 @@ public class Controller {
     public void OnDemandUpdateClick() {
 
         if(idFieldDemand.getText() != "") {
-            //demandDAO.updateDonorById(); //todo
+            //demandDAO.updateDemandById(); //todo
 
             //aktualizacja z listy
             ObservableList<Demand> data = FXCollections.observableArrayList();
@@ -799,7 +834,7 @@ public class Controller {
         Donor d = new Donor();
         d.setName(donorNameFieldDonors.getText());
         d.setLastName(donorLastNameFieldDonors.getText());
-        d.setBloodGroupId(bloodGroupCombo.getSelectionModel().getSelectedIndex()); //todo to ma dodawać id krwi a nie index z comboboxa
+        d.setBloodGroupId(bloodGroupComboDonors.getSelectionModel().getSelectedIndex()); //todo to ma dodawać id krwi a nie index z comboboxa
         d.setPhoneNumber(donorPhoneNumberFieldDonors.getText());
         d.setAddress(donorAddressFieldDonors.getText());
 
@@ -854,8 +889,8 @@ public class Controller {
     public void OnHospitalUpdateClick() {
 
         if(donorIdFieldDonors.getText() != "") {
-            //todo dodawanie id grupy krwi (trzeba zmiodyfikować metode updateDonorById)
-            donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
+
+            //donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
 
             //aktualizacja z listy
             ObservableList<Donor> data = FXCollections.observableArrayList();
