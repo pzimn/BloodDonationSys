@@ -16,12 +16,14 @@ public class Demand {
                 '}';
     }
 
-    public Demand(int storageId, int bloodGroupId, float quantity) {
-        //this.id = id;
+    public Demand(int id, int storageId, int bloodGroupId, float quantity) {
+        this.id = id;
         this.storageId = storageId;
         this.bloodGroupId = bloodGroupId;
         this.quantity = quantity;
     }
+
+    public Demand(){};
 
     public int getId() {
         return id;

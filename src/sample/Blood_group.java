@@ -6,9 +6,11 @@ public class Blood_group {
     private String group;
 
     public Blood_group(String group) {
-        //this.bloodGroupId = bloodGroupId;
+        this.id = id;
         this.group = group;
     }
+
+    public Blood_group(){}
 
     @Override
     public String toString() {
@@ -17,6 +19,7 @@ public class Blood_group {
                 ", group='" + group + '\'' +
                 '}';
     }
+
 
     public int getId() {
         return id;

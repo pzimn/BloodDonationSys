@@ -19,13 +19,16 @@ public class Storage {
                 '}';
     }
 
-    public Storage(int stationId, float bloodValue, int bloodGroupId, String phoneNumber, String address) {
+    public Storage(int id, int stationId, float bloodValue, int bloodGroupId, String phoneNumber, String address) {
+        this.id = id;
         this.stationId = stationId;
         this.bloodValue = bloodValue;
         this.bloodGroupId = bloodGroupId;
         this.phoneNumber = phoneNumber;
         this.address = address;
     }
+
+    public Storage(){}
 
     public int getId() {
         return id;
