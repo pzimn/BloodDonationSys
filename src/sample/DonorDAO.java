@@ -50,13 +50,14 @@ public class DonorDAO {
         jdbc.update(sql, namedParameters);
     }
 
-    public void updateDonorById(int id, String name, String last_name, String address, String phoneNumber){
-        String sql = "UPDATE donors SET address = :address, name = :name, last_name = :last_name, phone_number = :phoneNumber WHERE id = :id";
+    public void updateDonorById(int id, String name, String last_name, String address, String phoneNumber, int blood_group_id){
+        String sql = "UPDATE donors SET address = :address, name = :name, last_name = :last_name, phone_number = :phoneNumber, blood_group_id = :blood_group_id WHERE id = :id";
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         namedParameters.addValue("name", name);
         namedParameters.addValue("last_name", last_name);
         namedParameters.addValue("address", address);
         namedParameters.addValue("phoneNumber", phoneNumber);
+        namedParameters.addValue("blood_group_id", blood_group_id);
         namedParameters.addValue("id", id);
         jdbc.update(sql, namedParameters);
 

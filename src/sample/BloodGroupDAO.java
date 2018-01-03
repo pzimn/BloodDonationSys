@@ -47,20 +47,20 @@ public class BloodGroupDAO {
         jdbc.update(sql, namedParameters);
     }
 
-    public void updateBloodGroupById(int id, String group){
-        String sql = "UPDATE blood_group SET group = :group WHERE id = :id";
+    public void updateBloodGroupById(int id, String group_blood){
+        String sql = "UPDATE blood_group SET group_blood = :group_blood WHERE id = :id";
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-        namedParameters.addValue("group", group);
+        namedParameters.addValue("group_blood", group_blood);
         namedParameters.addValue("id", id);
         jdbc.update(sql, namedParameters);
 
     }
 
     public void create(Blood_group blood_group){
-        String sql = "INSERT INTO blood_group(group)" +
-                "VALUES (:group)";
+        String sql = "INSERT INTO blood_group(group_blood)" +
+                "VALUES (:group_blood)";
         Map namedParameters = new HashMap();
-        namedParameters.put("group", blood_group.getGroup());
+        namedParameters.put("group_blood", blood_group.getGroup());
         jdbc.update(sql, namedParameters);
         System.out.println("Created record with: " + blood_group.toString());
     }
@@ -74,7 +74,7 @@ class BloodGroupRowMapper implements RowMapper<Blood_group> {
 
         Blood_group blood_group = new Blood_group();
         blood_group.setId(resultSet.getInt("id"));
-        blood_group.setGroup(resultSet.getString("group"));
+        blood_group.setGroup(resultSet.getString("group_blood"));
 
         return blood_group;
     }

@@ -48,7 +48,7 @@ public class StorageDAO {
     }
 
     public void updateStorageById(int id, int stationId, float bloodValue, int bloodGroupId, String phoneNumber, String address ){
-        String sql = "UPDATE storages SET station_id = :stationId, blood_value = :bloodValue, blood_group_id = :bloodGroupId, phone_number = :phoneNumber, address = :address  WHERE id = :id";
+        String sql = "UPDATE storages SET stationId = :stationId, blood_value = :bloodValue, bloodGroupId = :bloodGroupId, phoneNumber = :phoneNumber, address = :address  WHERE id = :id";
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         namedParameters.addValue("stationId", stationId);
         namedParameters.addValue("bloodValue", bloodValue);
@@ -61,7 +61,7 @@ public class StorageDAO {
     }
 
     public void create(Storage storage){
-        String sql = "INSERT INTO storages(station_id, blood_value, blood_group_id, phone_number, address)" +
+        String sql = "INSERT INTO storages(stationId, bloodValue, bloodGroupId, phoneNumber, address)" +
                 "VALUES (:stationId, :bloodValue, :bloodGroupId, :phoneNumber, :address)";
         Map namedParameters = new HashMap();
         namedParameters.put("stationId", storage.getStationId());
@@ -83,10 +83,10 @@ class StorageMapper implements RowMapper<Storage> {
 
         Storage storage = new Storage();
         storage.setId(resultSet.getInt("id"));
-        storage.setStationId(resultSet.getInt("station_id"));
-        storage.setBloodValue(resultSet.getFloat("blood_value"));
-        storage.setBloodGroupId(resultSet.getInt("blood_group_id"));
-        storage.setPhoneNumber(resultSet.getString("phone_number"));
+        storage.setStationId(resultSet.getInt("stationId"));
+        storage.setBloodValue(resultSet.getFloat("bloodValue"));
+        storage.setBloodGroupId(resultSet.getInt("bloodGroupId"));
+        storage.setPhoneNumber(resultSet.getString("phoneNumber"));
         storage.setAddress(resultSet.getString("address"));
 
         return storage;

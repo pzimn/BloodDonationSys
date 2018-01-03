@@ -48,7 +48,7 @@ public class DemandDAO {
     }
 
     public void updateDemandById(int id, int storageId, int bloodGroupId, float quantity){
-        String sql = "UPDATE demands SET storage_id = :storageId, blood_group_id = :bloodGroupId, quantity = :quantity WHERE id = :id";
+        String sql = "UPDATE demands SET storageId = :storageId, blood_groupId = :bloodGroupId, quantity = :quantity WHERE id = :id";
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         namedParameters.addValue("storageId", storageId);
         namedParameters.addValue("bloodGroupId", bloodGroupId);
@@ -59,7 +59,7 @@ public class DemandDAO {
     }
 
     public void create(Demand demand){
-        String sql = "INSERT INTO demands(storage_id,blood_group_id,quantity)" +
+        String sql = "INSERT INTO demands(storageId,blood_groupId,quantity)" +
                 "VALUES (:storageId, :bloodGroupId, :quantity)";
         Map namedParameters = new HashMap();
         namedParameters.put("storageId", demand.getStorageId());
@@ -76,8 +76,8 @@ class demandRowMapper implements RowMapper<Demand> {
     @Override
     public Demand mapRow(ResultSet resultSet, int i) throws SQLException {
         Demand demand = new Demand();
-        demand.setStorageId(resultSet.getInt("storage_id"));
-        demand.setBloodGroupId(resultSet.getInt("blood_group_id"));
+        demand.setStorageId(resultSet.getInt("storageId"));
+        demand.setBloodGroupId(resultSet.getInt("blood_groupId"));
         demand.setQuantity(resultSet.getFloat("quantity"));
         return demand;
     }
