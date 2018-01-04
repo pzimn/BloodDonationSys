@@ -62,9 +62,7 @@ public class DonationDAO {
 
     public void create(Donation donation){
         String sql = "INSERT INTO donations(donor_id, station_id, amount, date, blood_group_id)" +
-                "VALUES (:donor_id, :station_id, :amount, :date, :blood_group_id)";
-
-        System.out.println("Created record with: " + donation.toString());
+                                    "VALUES (:donor_id, :station_id, :amount, :date, :bloodGroupId)";
         Map namedParameters = new HashMap();
         namedParameters.put("donor_id", donation.getDonorId());
         namedParameters.put("station_id", donation.getStationId());
