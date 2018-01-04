@@ -715,6 +715,7 @@ public class Controller {
         Demand d = new Demand();
         d.setBloodGroupId(bloodComboIdsDemand.get(bloodGroupComboDemand.getSelectionModel().getSelectedIndex()));
         d.setQuantity(Float.parseFloat(quantityFieldDemand.getText()));
+        d.setStorageId(Integer.parseInt(storageIdFieldDemand.getText()));
 
         demandDAO.create(d);
         //aktualizacja z listy

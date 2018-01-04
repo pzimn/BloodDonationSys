@@ -68,7 +68,7 @@ public class DonationDAO {
         namedParameters.put("station_id", donation.getStationId());
         namedParameters.put("amount", donation.getBloodLitres());
         namedParameters.put("date", donation.getDate());
-        namedParameters.put("blood_group_id", donation.getBloodGroupId());
+        namedParameters.put("bloodGroupId", donation.getBloodGroupId());
         jdbc.update(sql, namedParameters);
         System.out.println("Created record with: " + donation.toString());
     }
