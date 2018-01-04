@@ -76,6 +76,7 @@ class demandRowMapper implements RowMapper<Demand> {
     @Override
     public Demand mapRow(ResultSet resultSet, int i) throws SQLException {
         Demand demand = new Demand();
+        demand.setId(resultSet.getInt("id"));
         demand.setStorageId(resultSet.getInt("storageId"));
         demand.setBloodGroupId(resultSet.getInt("blood_groupId"));
         demand.setQuantity(resultSet.getFloat("quantity"));
