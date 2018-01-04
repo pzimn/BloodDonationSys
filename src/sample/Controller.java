@@ -21,6 +21,7 @@ public class Controller {
     BloodGroupDAO bloodDAO = new BloodGroupDAO();
     DemandDAO demandDAO = new DemandDAO();
     StorageDAO storageDAO = new StorageDAO();
+    HospitalDAO hospitalDAO = new HospitalDAO();
 
     @FXML
     TextArea infoBox;
@@ -200,7 +201,7 @@ public class Controller {
     TextField addressFieldHospital;
     @FXML
     TextField phoneNumberFieldHospital;
-    private HospitalDAO hospitalDAO;
+    //private HospitalDAO hospitalDAO;
 
     private void clearFields(){
         System.out.println("Ta metoda musi być zmieniona! (void clearFields())");
@@ -324,6 +325,8 @@ public class Controller {
         }
 
         bloodGroupComboDonors.setItems(combo1);
+
+
 
     } //todo
 
