@@ -128,6 +128,10 @@ public class Controller {
     @FXML
     TextField stationIdFieldDonations;
 
+    @FXML
+    ComboBox bloodGroupComboDonation;
+    List<Integer> bloodComboIdsDonation = new ArrayList<>();
+
     //zapotrzebowanie
     @FXML
     TableView bloodDemandTable;
@@ -149,6 +153,10 @@ public class Controller {
     TextField bloodGroupIdFieldDemand;
     @FXML
     TextField quantityFieldDemand;
+
+    @FXML
+    ComboBox bloodGroupComboDemand;
+    List<Integer> bloodComboIdsDemand = new ArrayList<>();
 
     //magazyn
     @FXML
@@ -179,6 +187,10 @@ public class Controller {
     TextField phoneNumberFieldStorage;
     @FXML
     TextField addressFieldStorage;
+
+    @FXML
+    ComboBox bloodGroupComboStorage;
+    List<Integer> bloodComboIdsStorage = new ArrayList<>();
 
     //szpital
     @FXML
@@ -327,7 +339,44 @@ public class Controller {
         bloodGroupComboDonors.setItems(combo1);
 
 
+        //init comboboxa demand
 
+        ObservableList<String> combo2 = FXCollections.observableArrayList();
+        //kasowanie list jeżeli kliknięto jeszcze raz connect
+        combo2.removeAll();
+        bloodComboIdsDemand.clear();
+        for(Blood_group b : bloodDAO.getAll()){
+            combo2.add(b.getGroup());
+            bloodComboIdsDemand.add(b.getId());
+        }
+
+        bloodGroupComboDemand.setItems(combo2);
+
+        //init comboboxa Strorage
+
+        ObservableList<String> combo3 = FXCollections.observableArrayList();
+        //kasowanie list jeżeli kliknięto jeszcze raz connect
+        combo3.removeAll();
+        bloodComboIdsStorage.clear();
+        for(Blood_group b : bloodDAO.getAll()){
+            combo3.add(b.getGroup());
+            bloodComboIdsStorage.add(b.getId());
+        }
+
+        bloodGroupComboStorage.setItems(combo3);
+
+        //init comboboxa donations
+
+        ObservableList<String> combo4 = FXCollections.observableArrayList();
+        //kasowanie list jeżeli kliknięto jeszcze raz connect
+        combo4.removeAll();
+        bloodComboIdsDonation.clear();
+        for(Blood_group b : bloodDAO.getAll()){
+            combo4.add(b.getGroup());
+            bloodComboIdsDonation.add(b.getId());
+        }
+
+        bloodGroupComboDonation.setItems(combo4);
     } //todo
 
     //donors
@@ -336,7 +385,6 @@ public class Controller {
         Donor d = new Donor();
         d.setName(donorNameFieldDonors.getText());
         d.setLastName(donorLastNameFieldDonors.getText());
-        //d.setBloodGroupId(bloodGroupComboDonors.getSelectionModel().getSelectedIndex()); //todo to ma dodawać id krwi a nie index z comboboxa
         d.setBloodGroupId(bloodComboIdsDonors.get(bloodGroupComboDonors.getSelectionModel().getSelectedIndex()));
         d.setPhoneNumber(donorPhoneNumberFieldDonors.getText());
         d.setAddress(donorAddressFieldDonors.getText());
@@ -389,7 +437,6 @@ public class Controller {
     public void OnDonorUpdateClick() {
 
         if(donorIdFieldDonors.getText() != "") {
-            //todo dodawanie id grupy krwi (trzeba zmiodyfikować metode updateDonorById)
             donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText(), bloodComboIdsDonors.get(bloodGroupComboDonors.getSelectionModel().getSelectedIndex()));
 
             //aktualizacja z listy
@@ -585,11 +632,10 @@ public class Controller {
     public void OnDonationAddClick() {
         Donation d = new Donation();
         d.setDonorId(Integer.parseInt(donorIdFieldDonations.getText()));
-        d.setDonorId(1);
         d.setBloodLitres(Float.parseFloat(bloodLitresFieldDonations.getText()));
         d.setDate(dateFieldDonations.getText());
         d.setStationId(Integer.parseInt(stationIdFieldDonations.getText()));
-        //d.setBloodGroupId(0); //todo tutaj musi byc combobox
+        d.setBloodGroupId(bloodComboIdsDonation.get(bloodGroupComboDonation.getSelectionModel().getSelectedIndex()));
 
         donationDAO.create(d);
 
@@ -601,7 +647,7 @@ public class Controller {
         bloodDonationsTable.setItems(datad);
         OnClearDonationFields();
 
-    } //todo combo box
+    }
 
     @FXML
     public void OnDonationTableClick() {
@@ -639,8 +685,7 @@ public class Controller {
     public void OnDonationUpdateClick() {
 
         if(idFieldDonations.getText() != "") {
-            donationDAO.updateDonationById(Integer.parseInt(idFieldDonations.getText()), Integer.parseInt(donorIdFieldDonations.getText()), Float.parseFloat(bloodLitresFieldDonations.getText()), dateFieldDonations.getText(), Integer.parseInt(stationIdFieldDonations.getText()), Integer.parseInt(bloodGroupIdFieldDonations.getText()));
-            //todo grupa krwi z comboboxa
+            donationDAO.updateDonationById(Integer.parseInt(idFieldDonations.getText()), Integer.parseInt(donorIdFieldDonations.getText()), Float.parseFloat(bloodLitresFieldDonations.getText()), dateFieldDonations.getText(), Integer.parseInt(stationIdFieldDonations.getText()), bloodComboIdsDonation.get(bloodGroupComboDonation.getSelectionModel().getSelectedIndex()));
 
             //update tabeli donation
             ObservableList<Donation> datad = FXCollections.observableArrayList();
@@ -652,7 +697,7 @@ public class Controller {
         }else{
             System.out.println("Nie wybrano krotki!");
         }
-    } //todo
+    }
 
     @FXML
     public void OnClearDonationFields(){
@@ -668,8 +713,7 @@ public class Controller {
     @FXML
     public void OnDemandAddClick() {
         Demand d = new Demand();
-        //d.setStorageId();
-        d.setBloodGroupId(2); //todo combo
+        d.setBloodGroupId(bloodComboIdsDemand.get(bloodGroupComboDemand.getSelectionModel().getSelectedIndex()));
         d.setQuantity(Float.parseFloat(quantityFieldDemand.getText()));
 
         demandDAO.create(d);
@@ -721,7 +765,7 @@ public class Controller {
     public void OnDemandUpdateClick() {
 
         if(idFieldDemand.getText() != "") {
-            demandDAO.updateDemandById(Integer.parseInt(idFieldDemand.getText()), Integer.parseInt(storageIdFieldDemand.getText()), 5, Float.parseFloat(quantityFieldDemand.getText())); //todo bloodgroup
+            demandDAO.updateDemandById(Integer.parseInt(idFieldDemand.getText()), Integer.parseInt(storageIdFieldDemand.getText()), bloodComboIdsDemand.get(bloodGroupComboDemand.getSelectionModel().getSelectedIndex()), Float.parseFloat(quantityFieldDemand.getText()));
 
             //aktualizacja z listy
             ObservableList<Demand> data = FXCollections.observableArrayList();
@@ -734,7 +778,7 @@ public class Controller {
         }else{
             System.out.println("Nie wybrano krotki!");
         }
-    } //todo
+    }
 
     @FXML
     public void OnClearDemandFields(){
@@ -751,7 +795,7 @@ public class Controller {
 
         d.setStationId(Integer.parseInt(stationIdFieldStorage.getText()));
         d.setBloodValue(Float.parseFloat(valueFieldStorage.getText()));
-        //d.setBloodGroupId(0); //todo combobox
+        d.setBloodGroupId(bloodComboIdsStorage.get(bloodGroupComboStorage.getSelectionModel().getSelectedIndex()));
         d.setPhoneNumber(phoneNumberFieldStorage.getText());
         d.setAddress(addressFieldStorage.getText());
 
@@ -764,7 +808,7 @@ public class Controller {
         bloodStorageTable.setItems(data);
         OnClearStorageFields();
 
-    }//todo
+    }
 
     @FXML
     public void OnStorageTableClick() {
@@ -806,6 +850,7 @@ public class Controller {
 
         if(idFieldStorage.getText() != "") {
             //storageDAO.updateStorageById(Integer.parseInt(idFieldStorage.getText()), ); todo
+            //kombo z krwią: bloodComboIdsStorage.get(bloodGroupComboStorage.getSelectionModel().getSelectedIndex()) todo
 
             //aktualizacja z listy
             ObservableList<Storage> data = FXCollections.observableArrayList();
@@ -818,7 +863,7 @@ public class Controller {
         }else{
             System.out.println("Nie wybrano krotki!");
         }
-    }//todo
+    }//todo wgl nie update'uje
 
     @FXML
     public void OnClearStorageFields(){
@@ -837,7 +882,7 @@ public class Controller {
         Donor d = new Donor();
         d.setName(donorNameFieldDonors.getText());
         d.setLastName(donorLastNameFieldDonors.getText());
-        d.setBloodGroupId(bloodGroupComboDonors.getSelectionModel().getSelectedIndex()); //todo to ma dodawać id krwi a nie index z comboboxa
+        d.setBloodGroupId(bloodGroupComboDonors.getSelectionModel().getSelectedIndex());
         d.setPhoneNumber(donorPhoneNumberFieldDonors.getText());
         d.setAddress(donorAddressFieldDonors.getText());
 
@@ -850,7 +895,7 @@ public class Controller {
         donorsTable.setItems(data);
         clearFields();
 
-    }//todo
+    }//todo w całosci
 
     @FXML
     public void OnHospitalTableClick() {
@@ -871,7 +916,7 @@ public class Controller {
         }
 
 
-    }//todo
+    }//todo w całosci
 
     @FXML
     public void OnHospitalDeleteClick() {
@@ -886,7 +931,7 @@ public class Controller {
         }
         donorsTable.setItems(data);
         clearFields();
-    }//todo
+    }//todo w całosci
 
     @FXML
     public void OnHospitalUpdateClick() {
@@ -906,7 +951,7 @@ public class Controller {
         }else{
             System.out.println("Nie wybrano krotki!");
         }
-    }//todo
+    }//todo w całosci
 
     @FXML
     public void OnClearHospitalFields(){
