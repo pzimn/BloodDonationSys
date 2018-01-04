@@ -315,6 +315,9 @@ public class Controller {
         //init comboboxa donors
 
         ObservableList<String> combo1 = FXCollections.observableArrayList();
+        //kasowanie list jeżeli kliknięto jeszcze raz connect
+        combo1.removeAll();
+        bloodComboIdsDonors.clear();
         for(Blood_group b : bloodDAO.getAll()){
             combo1.add(b.getGroup());
             bloodComboIdsDonors.add(b.getId());
@@ -384,7 +387,7 @@ public class Controller {
 
         if(donorIdFieldDonors.getText() != "") {
             //todo dodawanie id grupy krwi (trzeba zmiodyfikować metode updateDonorById)
-           // donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText());
+            donorDAO.updateDonorById(Integer.parseInt(donorIdFieldDonors.getText()), donorNameFieldDonors.getText(), donorLastNameFieldDonors.getText(), donorAddressFieldDonors.getText(), donorPhoneNumberFieldDonors.getText(), bloodComboIdsDonors.get(bloodGroupComboDonors.getSelectionModel().getSelectedIndex()));
 
             //aktualizacja z listy
             ObservableList<Donor> data = FXCollections.observableArrayList();
@@ -608,13 +611,11 @@ public class Controller {
             bloodLitresFieldDonations.setText(Float.toString(donation2update.getBloodLitres()));
             dateFieldDonations.setText(donation2update.getDate());
             stationIdFieldDonations.setText(Integer.toString(donation2update.getStationId()));
-            //bloodGroupIdFieldDonations.setText(Integer.toString(donation2update.getBloodGroupId())); //todo nie wiem czy w klasie donation tego nie brakuje
+            bloodGroupIdFieldDonations.setText(Integer.toString(donation2update.getBloodGroupId()));
 
         } else {
             System.out.println("Nie wybrano elementu!");
         }
-
-
     }
 
     @FXML
@@ -635,8 +636,7 @@ public class Controller {
     public void OnDonationUpdateClick() {
 
         if(idFieldDonations.getText() != "") {
-            donationDAO.updateDonationById(Integer.parseInt(idFieldDonations.getText()), Integer.parseInt(donorIdFieldDonations.getText()), Float.parseFloat(bloodLitresFieldDonations.getText()), dateFieldDonations.getText(), Integer.parseInt(stationIdFieldDonations.getText()));
-
+            donationDAO.updateDonationById(Integer.parseInt(idFieldDonations.getText()), Integer.parseInt(donorIdFieldDonations.getText()), Float.parseFloat(bloodLitresFieldDonations.getText()), dateFieldDonations.getText(), Integer.parseInt(stationIdFieldDonations.getText()), Integer.parseInt(bloodGroupIdFieldDonations.getText()));
             //todo grupa krwi z comboboxa
 
             //update tabeli donation
@@ -666,8 +666,8 @@ public class Controller {
     public void OnDemandAddClick() {
         Demand d = new Demand();
         //d.setStorageId();
-        d.setBloodGroupId(bloodGroupComboDonors.getSelectionModel().getSelectedIndex()); //todo combo
-        d.setQuantity(Integer.parseInt(quantityFieldDemand.getText()));
+        d.setBloodGroupId(2); //todo combo
+        d.setQuantity(Float.parseFloat(quantityFieldDemand.getText()));
 
         demandDAO.create(d);
         //aktualizacja z listy
@@ -718,7 +718,7 @@ public class Controller {
     public void OnDemandUpdateClick() {
 
         if(idFieldDemand.getText() != "") {
-            //demandDAO.updateDemandById(); //todo
+            demandDAO.updateDemandById(Integer.parseInt(idFieldDemand.getText()), Integer.parseInt(storageIdFieldDemand.getText()), 5, Float.parseFloat(quantityFieldDemand.getText())); //todo bloodgroup
 
             //aktualizacja z listy
             ObservableList<Demand> data = FXCollections.observableArrayList();

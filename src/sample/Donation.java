@@ -6,6 +6,7 @@ public class Donation {
     float bloodLitres;
     String date;
     int stationId;
+    int bloodGroupId;
 
     public int getBloodGroupId() {
         return bloodGroupId;
@@ -15,8 +16,6 @@ public class Donation {
         this.bloodGroupId = bloodGroupId;
     }
 
-    int bloodGroupId;
-
     @Override
     public String toString() {
         return "Donation{" +
@@ -25,6 +24,7 @@ public class Donation {
                 ", bloodLitres='" + bloodLitres + '\'' +
                 ", date=" + date +
                 ", stationId='" + stationId + '\'' +
+                ", bloodGroupId='" + bloodGroupId + '\'' +
                 '}';
     }
 

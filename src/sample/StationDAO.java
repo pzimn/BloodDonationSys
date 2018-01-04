@@ -47,12 +47,12 @@ public class StationDAO {
         jdbc.update(sql, namedParameters);
     }
 
-    public void updateStationById(int id, String name, String address, String phoneNumber){
+    public void updateStationById(int id, String name, String address, String phone_number){
         String sql = "UPDATE stations SET address = :address, name = :name, phone_number = :phoneNumber WHERE id = :id";
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         namedParameters.addValue("name", name);
         namedParameters.addValue("address", address);
-        namedParameters.addValue("phone_number", phoneNumber);
+        namedParameters.addValue("phoneNumber", phone_number);
         namedParameters.addValue("id", id);
         jdbc.update(sql, namedParameters);
 
@@ -64,7 +64,7 @@ public class StationDAO {
         Map namedParameters = new HashMap();
         namedParameters.put("name", station.getName());
         namedParameters.put("address", station.getAddress());
-        namedParameters.put("phone_number", station.getAddress());
+        namedParameters.put("phone_number", station.getPhoneNumber());
         jdbc.update(sql, namedParameters);
         System.out.println("Created record with: " + station.toString());
     }
