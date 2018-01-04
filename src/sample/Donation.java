@@ -16,17 +16,6 @@ public class Donation {
         this.bloodGroupId = bloodGroupId;
     }
 
-
-    public int getBloodGroupId() {
-        return bloodGroupId;
-    }
-
-    public void setBloodGroupId(int bloodGroupId) {
-        this.bloodGroupId = bloodGroupId;
-    }
-
-    int bloodGroupId;
-
     @Override
     public String toString() {
         return "Donation{" +
