@@ -24,8 +24,8 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
     <loaded-nodes>
-      <connection connection-id="486faaac-3b65-4d40-98fa-11b0262457c3">
-        <schema name="bds" object-types="column, function, procedure, table, view" />
+      <connection connection-id="e4973c2a-5007-4a71-8c33-86ed946ef0ed">
+        <schema name="bds" object-types="column, constraint, function, index, procedure, table, dataset trigger, view" />
       </connection>
     </loaded-nodes>
   </component>
@@ -33,6 +33,21 @@
     <connection id="486faaac-3b65-4d40-98fa-11b0262457c3">
       <console name="Connection" type="STANDARD"><![CDATA[select * from donors]]></console>
     </connection>
+    <connection id="e4973c2a-5007-4a71-8c33-86ed946ef0ed">
+      <console name="Connection 1" type="STANDARD"><![CDATA[--ALTER TABLE demands MODIFY id smallint(10) AUTO_INCREMENT;
+--SHOW TABLE STATUS WHERE Name =  'demands';
+--SET foreign_key_checks = 0;
+--INSERT INTO demands(`blood_groupId`,quantity,`storageId`) VALUES (3, 5.5, 3);
+select * from demands
+ --select * from demands]]></console>
+    </connection>
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-list connection-id="e4973c2a-5007-4a71-8c33-86ed946ef0ed" dataset="bds.storages" active-filter-id="ed488b2f-0cc7-4b42-aa44-5760c07ac641">
+      <filter id="ed488b2f-0cc7-4b42-aa44-5760c07ac641" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-list>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -75,6 +90,82 @@
           <empty-password value="true" />
           <user value="root" />
           <password value="" />
+        </database>
+        <properties>
+          <auto-commit value="false" />
+        </properties>
+        <ssh-settings>
+          <active value="false" />
+          <proxy-host value="" />
+          <proxy-port value="22" />
+          <proxy-user value="" />
+          <proxy-password value="" />
+          <auth-type value="PASSWORD" />
+          <key-file value="" />
+          <key-passphrase value="" />
+        </ssh-settings>
+        <details>
+          <charset value="UTF-8" />
+          <ddl-file-binding value="true" />
+          <database-logging value="false" />
+          <connect-automatically value="true" />
+          <restore-workspace value="true" />
+          <restore-workspace-deep value="true" />
+          <environment-type value="default" />
+          <idle-time-to-disconnect value="30" />
+          <password-expiry-time value="10" />
+          <max-connection-pool-size value="7" />
+          <alternative-statement-delimiter value="" />
+        </details>
+        <object-filters hide-empty-schemas="false">
+          <object-type-filter use-master-settings="true">
+            <object-type name="SCHEMA" enabled="true" />
+            <object-type name="USER" enabled="true" />
+            <object-type name="ROLE" enabled="true" />
+            <object-type name="PRIVILEGE" enabled="true" />
+            <object-type name="CHARSET" enabled="true" />
+            <object-type name="TABLE" enabled="true" />
+            <object-type name="VIEW" enabled="true" />
+            <object-type name="MATERIALIZED_VIEW" enabled="true" />
+            <object-type name="NESTED_TABLE" enabled="true" />
+            <object-type name="COLUMN" enabled="true" />
+            <object-type name="INDEX" enabled="true" />
+            <object-type name="CONSTRAINT" enabled="true" />
+            <object-type name="DATASET_TRIGGER" enabled="true" />
+            <object-type name="DATABASE_TRIGGER" enabled="true" />
+            <object-type name="SYNONYM" enabled="true" />
+            <object-type name="SEQUENCE" enabled="true" />
+            <object-type name="PROCEDURE" enabled="true" />
+            <object-type name="FUNCTION" enabled="true" />
+            <object-type name="PACKAGE" enabled="true" />
+            <object-type name="TYPE" enabled="true" />
+            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
+            <object-type name="ARGUMENT" enabled="true" />
+            <object-type name="DIMENSION" enabled="true" />
+            <object-type name="CLUSTER" enabled="true" />
+            <object-type name="DBLINK" enabled="true" />
+          </object-type-filter>
+          <object-name-filters />
+        </object-filters>
+      </connection>
+      <connection id="e4973c2a-5007-4a71-8c33-86ed946ef0ed" active="true">
+        <database>
+          <name value="Connection 1" />
+          <description value="" />
+          <database-type value="MYSQL" />
+          <config-type value="BASIC" />
+          <database-version value="5.5" />
+          <driver-source value="BUILTIN" />
+          <driver-library value="" />
+          <driver value="" />
+          <url-type value="DATABASE" />
+          <host value="vpnmalina.mooo.com" />
+          <port value="3306" />
+          <database value="bds" />
+          <os-authentication value="false" />
+          <empty-password value="false" />
+          <user value="user" />
+          <password value="Tm9zYWN6IUAk" />
         </database>
         <properties>
           <auto-commit value="false" />
